@@ -5,7 +5,9 @@
  */
 package eyeclinic.Modals.PatientCreate;
 
+import eyeclinic.Patient;
 import eyeclinic.Stores.ModalsStore;
+import eyeclinic.Stores.PatientsStore;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -19,13 +21,25 @@ import javafx.scene.control.TextField;
  */
 public class Controller {
 
-    public TextField nameField, emailField, phoneField, addressField;
+    public TextField nameField;
+    public TextField emailField;
+    public TextField phoneField;
+    public TextField addressField;
     public Button cancelButton, createButton;
     
     public void createPatient () {
-        // TODO get the data from the fields
+        String name = nameField.getText();
+        String email = emailField.getText();
+        String phone = phoneField.getText();
+        String address = addressField.getText();
         // TODO validate the data
-        // TODO create new patient via PatientStore.put(new Patient(...))
+
+        PatientsStore.getPatients().add(new Patient(name, phone, address, email));    
+        nameField.setText("");
+        emailField.setText("");
+        phoneField.setText("");
+        addressField.setText("");
+        ModalsStore.closeModal();
     }
     
     public void cancelCreation () {

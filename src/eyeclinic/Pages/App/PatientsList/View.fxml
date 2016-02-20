@@ -10,7 +10,7 @@
 
 <VBox alignment="CENTER" spacing="5.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eyeclinic.Pages.App.PatientsList.Controller">
    <children>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox>
          <children>
             <Label text="Patients">
                <font>
@@ -21,6 +21,7 @@
             <Button fx:id="createNewPatientButtonHandler" mnemonicParsing="false" onAction="#createPatientButtonHandler" text="Create new" />
          </children>
       </HBox>
+      <VBox fx:id="container" spacing="5.0" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
