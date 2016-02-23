@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eyeclinic.Modals.PatientCreate.Controller">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <Label text="Create New Patient" BorderPane.alignment="CENTER">
          <font>
@@ -40,11 +40,11 @@
                   <Insets top="10.0" />
                </HBox.margin></Region>
             <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelCreation" text="Cancel" />
-            <Button mnemonicParsing="false" onAction="#createPatient" text="Create" />
+            <Button mnemonicParsing="false" onAction="#handleSubmit" text="Create" />
          </children>
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
       </HBox>
    </bottom>
-</BorderPane>
+</fx:root>

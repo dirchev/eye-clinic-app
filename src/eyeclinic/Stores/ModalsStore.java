@@ -16,22 +16,13 @@ import javafx.stage.Stage;
  * @author dirchev
  */
 public class ModalsStore {
-    private static HashMap<String, Scene> modals = new HashMap<>();
     private static Stage openedModal;
-    // register all modals
-    // method for showing new model
 
-    public static HashMap<String, Scene> getModals() {
-        return modals;
-    }
-
-    public static void setModals(HashMap<String, Scene> modals) {
-        ModalsStore.modals = modals;
+    public static void setOpenedModal(Stage openedModal) {
+        ModalsStore.openedModal = openedModal;
     }
     
-    public static void showModal (String modalName) {
-        Scene modalContent = modals.get(modalName);
-        
+    public static void showModal (Scene scene) {
         Stage modal = new Stage();
         
         // Keep a reference to currently opened modal
@@ -43,7 +34,7 @@ public class ModalsStore {
         modal.setMinWidth(250);
 
         //Display modal and wait for it to be closed before returning
-        modal.setScene(modalContent);
+        modal.setScene(scene);
         modal.showAndWait();
     }
     

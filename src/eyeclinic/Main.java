@@ -30,7 +30,6 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         Main.window = stage;
         initScenes();
-        initModals();
         window.setScene(scenes.get("login"));
         window.show();
     }
@@ -50,10 +49,5 @@ public class Main extends Application {
     private void initScenes() throws Exception {
         scenes.put("login", new Scene(FXMLLoader.load(getClass().getResource("Pages/Login/View.fxml"))));
         scenes.put("app", new Scene(FXMLLoader.load(getClass().getResource("Pages/App/View.fxml"))));
-    }
-    
-    private void initModals () throws Exception {
-        ModalsStore.getModals().put("patientPreview", new Scene(FXMLLoader.load(getClass().getResource("Modals/PatientPreview/View.fxml"))));
-        ModalsStore.getModals().put("patientCreate", new Scene(FXMLLoader.load(getClass().getResource("Modals/PatientCreate/View.fxml"))));
     }
 }

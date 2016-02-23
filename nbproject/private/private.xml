@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/dirchev/Development/NetBeansProjects/EyeClinic/src/eyeclinic/Pages/App/PatientsList/PatientItem/PatientItem.java</file>
-            <file>file:/home/dirchev/Development/NetBeansProjects/EyeClinic/src/eyeclinic/Stores/PatientsStore.java</file>
-            <file>file:/home/dirchev/Development/NetBeansProjects/EyeClinic/src/eyeclinic/Modals/PatientCreate/Controller.java</file>
+            <file>file:/home/dirchev/Development/NetBeansProjects/EyeClinic/src/eyeclinic/Modals/PatientPreview/PatientPreview.java</file>
+            <file>file:/home/dirchev/Development/NetBeansProjects/EyeClinic/src/eyeclinic/Components/PatientItem/PatientItem.java</file>
+            <file>file:/home/dirchev/Development/NetBeansProjects/EyeClinic/src/eyeclinic/Modals/PatientForm/PatientForm.java</file>
             <file>file:/home/dirchev/Development/NetBeansProjects/EyeClinic/src/eyeclinic/Pages/App/PatientsList/Controller.java</file>
         </group>
     </open-files>

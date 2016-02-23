@@ -5,14 +5,15 @@
  */
 package eyeclinic.Pages.App.PatientsList;
 
-import eyeclinic.Pages.App.PatientsList.PatientItem.PatientItem;
+import eyeclinic.Components.PatientItem.PatientItem;
+import eyeclinic.Modals.PatientForm.PatientForm;
 import eyeclinic.Patient;
 import eyeclinic.Stores.ModalsStore;
 import eyeclinic.Stores.PatientsStore;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
+import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 
 /**
@@ -32,17 +33,12 @@ public class Controller implements Initializable {
     private void updatePatientsList () {
         container.getChildren().clear();
         for (Patient patient : PatientsStore.getPatients()) {
-            PatientItem patientItem = new PatientItem(patient);
-            try {
-                container.getChildren().add(patientItem.show());
-            } catch (Exception e) {
-                System.err.println("Error while loading patient item");
-            }
+            container.getChildren().add(new PatientItem(patient));
         }
     }
     
     public void createPatientButtonHandler () {
-        ModalsStore.showModal("patientCreate");
+        ModalsStore.showModal(new Scene(new PatientForm()));
         updatePatientsList();
     }
 }
