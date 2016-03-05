@@ -30,7 +30,7 @@ public class Controller implements Initializable {
         updatePatientsList();
     }
     
-    private void updatePatientsList () {
+    public void updatePatientsList () {
         container.getChildren().clear();
         for (Patient patient : PatientsStore.getPatients()) {
             container.getChildren().add(new PatientItem(patient));

@@ -18,10 +18,15 @@
                </font>
             </Label>
             <Region HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#updatePatientsList" text="Refresh" />
             <Button fx:id="createNewPatientButtonHandler" mnemonicParsing="false" onAction="#createPatientButtonHandler" text="Create new" />
          </children>
       </HBox>
-      <VBox fx:id="container" spacing="5.0" />
+      <ScrollPane fitToHeight="true" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox fx:id="container" spacing="5.0" />
+         </content>
+      </ScrollPane>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

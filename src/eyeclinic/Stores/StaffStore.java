@@ -15,6 +15,11 @@ import java.util.ArrayList;
 public class StaffStore {
     private static ArrayList<Staff> staff = new ArrayList<>();
 
+    static {
+        StaffStore.getStaff().add(new Staff("dirchev", "121212", "Dimitar Mirchev", "optician"));
+        StaffStore.getStaff().add(new Staff("john", "121212", "John Cena", "receptionist"));
+    }
+    
     public static ArrayList<Staff> getStaff() {
         return staff;
     }

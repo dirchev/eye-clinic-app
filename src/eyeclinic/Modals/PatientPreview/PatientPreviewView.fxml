@@ -19,29 +19,56 @@
             </Label>
             <Region HBox.hgrow="ALWAYS" />
             <Button mnemonicParsing="false" onAction="#editPatient" text="Edit" />
-            <Button fx:id="closeButton" mnemonicParsing="false" text="Close" />
+            <Button fx:id="closeButton" mnemonicParsing="false" onAction="#close" text="Close" />
          </children>
       </HBox>
-      <VBox spacing="5.0">
+      <VBox spacing="10.0">
          <children>
-            <Label text="Email: something@gmail.com">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="10.0" layoutY="10.0" text="Phone: 0786573892">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label text="Address: Glasgow, Something">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
+            <HBox spacing="20.0">
+               <children>
+                  <Label text="Email">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="patientEmailLabel" layoutX="10.0" layoutY="10.0" text="email">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="10.0" spacing="20.0">
+               <children>
+                  <Label text="Phone">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="patientPhoneLabel" layoutX="10.0" layoutY="10.0" text="phone">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="188.0" spacing="20.0">
+               <children>
+                  <Label text="Address">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="patientAddressLabel" layoutX="10.0" layoutY="10.0" text="address">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
          </children>
       </VBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                <children>
@@ -55,12 +82,22 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label text="Treatments">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                  <HBox>
+                     <children>
+                        <Label text="Treatments">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#newTreatment" text="New" />
+                     </children>
+                  </HBox>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <content>
+                        <VBox fx:id="treatmentsContainer" alignment="CENTER" />
+                     </content>
+                  </ScrollPane>
                </children>
             </VBox>
          </children>

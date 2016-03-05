@@ -1,14 +1,9 @@
 package eyeclinic;
 
-import eyeclinic.Stores.AuthStore;
-import eyeclinic.Stores.ModalsStore;
-import eyeclinic.Stores.StaffStore;
 import java.util.HashMap;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /*
@@ -38,10 +33,6 @@ public class Main extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // feel data in stores
-        StaffStore.getStaff().add(new Staff("dirchev", "121212", "Dimitar Mirchev", "optician"));
-        StaffStore.getStaff().add(new Staff("john", "121212", "John Cena", "receptionist"));
-        
         // launch the app
         launch(args);
     }

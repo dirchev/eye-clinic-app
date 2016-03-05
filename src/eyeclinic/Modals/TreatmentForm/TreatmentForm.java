@@ -3,16 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eyeclinic.Modals.PatientForm;
+package eyeclinic.Modals.TreatmentForm;
 
 import eyeclinic.Modals.PatientPreview.PatientPreview;
 import eyeclinic.Patient;
 import eyeclinic.Stores.ModalsStore;
 import eyeclinic.Stores.PatientsStore;
+import eyeclinic.Stores.TreatmentsStore;
+import eyeclinic.Treatment;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -22,32 +25,20 @@ import javafx.scene.layout.VBox;
  *
  * @author dirchev
  */
-public class PatientForm extends BorderPane {
+public class TreatmentForm extends BorderPane {
 
-    public TextField nameField;
-    public TextField emailField;
-    public TextField phoneField;
-    public TextField addressField;
+    public TextField titleField;
+    public Label patientNameLabel;
+    public Label patientEmailLabel;
     public Button cancelButton, createButton;
     
     private Patient patient = null;
+    private Treatment treatment = null;
     
     // Patient Create (no patient object is passed)
-    public PatientForm() {
+    public TreatmentForm(Patient patient) {
         super();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PatientFormView.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-    }
-    // Patient Edit
-    public PatientForm(Patient patient) {
-        super();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PatientFormView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TreatmentFormView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {
@@ -56,46 +47,59 @@ public class PatientForm extends BorderPane {
             throw new RuntimeException(exception);
         }
         this.patient = patient;
-        nameField.setText(patient.getFullName());
-        emailField.setText(patient.getEmail());
-        phoneField.setText(patient.getPhoneNumber());
-        addressField.setText(patient.getAddress());
+        displayPatientInfo();
+    }
+    // Patient Edit
+    public TreatmentForm(Patient patient, Treatment treatment) {
+        super();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TreatmentFormView.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+        this.patient = patient;
+        this.treatment = treatment;
+        titleField.setText(treatment.getTitle());
+        displayPatientInfo();
+    }
+    
+    private void displayPatientInfo () {
+        patientNameLabel.setText(this.patient.getFullName());
+        patientEmailLabel.setText(this.patient.getEmail());
     }
     
     public void handleSubmit () {
-        if (this.patient == null) {
-            // patient was not imported, create a new one
-            this.createPatient();
+        if (this.treatment == null) {
+            // treatment was not imported, create a new one
+            this.createTreatment();
         } else {
-            this.updatePatient();
+            this.updateTreatment();
         }
         ModalsStore.showModal(new Scene(new PatientPreview(this.patient)), false);
     }
     
-    private void createPatient () {
-        String name = nameField.getText();
-        String email = emailField.getText();
-        String phone = phoneField.getText();
-        String address = addressField.getText();
-        this.patient = new Patient(name, phone, address, email);
-        PatientsStore.getPatients().add(this.patient);
+    private void createTreatment () {
+        String title = titleField.getText();
+        this.treatment = new Treatment(title, this.patient);
+        TreatmentsStore.getTreatments().add(this.treatment);
     }
     
-    private void updatePatient () {
-        this.patient.setFullName(nameField.getText());
-        this.patient.setEmail(emailField.getText());
-        this.patient.setPhoneNumber(phoneField.getText());
-        this.patient.setAddress(addressField.getText());
+    private void updateTreatment () {
+        this.treatment.setTitle(titleField.getText());
     }
     
     public void cancelCreation () {
         // TODO show alert (Are you sure you cant to cancel patient creation?)
         // TODO check for alert result
-        if (this.patient == null) {
+        if (this.treatment == null) {
             // close the modal
             ModalsStore.closeModal();
         } else {
-            ModalsStore.showModal(new Scene(new PatientPreview(this.patient)), false);
+            System.out.println("To be implemented");
+//            ModalsStore.showModal(new Scene(new TreatmentPreview(this.treatment)), false);
         }
         
     }
