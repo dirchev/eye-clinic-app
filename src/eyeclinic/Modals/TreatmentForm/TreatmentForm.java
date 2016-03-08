@@ -35,7 +35,7 @@ public class TreatmentForm extends BorderPane {
     private Patient patient = null;
     private Treatment treatment = null;
     
-    // Patient Create (no patient object is passed)
+    // Treatment Create (only patient object is passed)
     public TreatmentForm(Patient patient) {
         super();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TreatmentFormView.fxml"));
@@ -49,8 +49,8 @@ public class TreatmentForm extends BorderPane {
         this.patient = patient;
         displayPatientInfo();
     }
-    // Patient Edit
-    public TreatmentForm(Patient patient, Treatment treatment) {
+    // Treatment Edit
+    public TreatmentForm(Treatment treatment) {
         super();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TreatmentFormView.fxml"));
         fxmlLoader.setRoot(this);
@@ -60,7 +60,7 @@ public class TreatmentForm extends BorderPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        this.patient = patient;
+        this.patient = treatment.getPatient();
         this.treatment = treatment;
         titleField.setText(treatment.getTitle());
         displayPatientInfo();
