@@ -22,6 +22,7 @@
             <Button fx:id="createNewPatientButtonHandler" mnemonicParsing="false" onAction="#createPatientButtonHandler" text="Create new" />
          </children>
       </HBox>
+      <TextField fx:id="patientSearchField" onKeyReleased="#onSearchFieldUpdate" promptText="Search by name" />
       <ScrollPane fitToHeight="true" VBox.vgrow="ALWAYS">
          <content>
             <VBox fx:id="container" spacing="5.0" />
