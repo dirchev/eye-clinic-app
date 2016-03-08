@@ -5,11 +5,12 @@
  */
 package eyeclinic.Components.TreatmentItem;
 
-import eyeclinic.Patient;
+import eyeclinic.Modals.TreatmentPreview.TreatmentPreview;
+import eyeclinic.Stores.ModalsStore;
 import eyeclinic.Treatment;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
@@ -40,20 +41,6 @@ public class TreatmentItem extends VBox {
     }
     
     public void previewTreatment () {
-//        Scene modalContent = new Scene(new PatientPreview(patient));
-//        
-//        Stage modal = new Stage();
-//        
-//        // Keep a reference to currently opened modal
-//        ModalsStore.setOpenedModal(modal);
-//
-//        //Block events to other modals
-//        modal.initModality(Modality.APPLICATION_MODAL);
-//        modal.setTitle("Patient Preview");
-//        modal.setMinWidth(250);
-//
-//        //Display modal and wait for it to be closed before returning
-//        modal.setScene(modalContent);
-//        modal.showAndWait();
+        ModalsStore.showModal(new Scene(new TreatmentPreview(this.treatment)), false);
     }
 }
