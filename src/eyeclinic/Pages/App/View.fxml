@@ -28,7 +28,7 @@
    <center>
       <VBox fx:id="contentWrapper" prefHeight="355.0" prefWidth="600.0" BorderPane.alignment="TOP_CENTER">
          <children>
-            <fx:include fx:id="content" source="AppointmentsList/View.fxml" />
+            <fx:include fx:id="content" source="AppointmentsList/AppointmentsListView.fxml" />
          </children>
       </VBox>
    </center>

@@ -51,8 +51,8 @@ public class Controller implements Initializable {
     }
     
     private void initLayouts () throws Exception {
-        contentLayouts.put("appointmentsList", FXMLLoader.load(getClass().getResource("AppointmentsList/View.fxml")));
-        contentLayouts.put("patientsList", FXMLLoader.load(getClass().getResource("PatientsList/View.fxml")));
+        contentLayouts.put("appointmentsList", FXMLLoader.load(getClass().getResource("AppointmentsList/AppointmentsListView.fxml")));
+        contentLayouts.put("patientsList", FXMLLoader.load(getClass().getResource("PatientsList/PatientsListView.fxml")));
     }
     
     private void changeContent (String name) {

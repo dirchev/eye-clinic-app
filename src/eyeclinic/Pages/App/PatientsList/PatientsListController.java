@@ -20,11 +20,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 /**
- * FXML Controller class
+ * FXML PatientsListController class
  *
  * @author dirchev
  */
-public class Controller implements Initializable {
+public class PatientsListController implements Initializable {
 
     public VBox container = new VBox();
     public TextField patientSearchField;
