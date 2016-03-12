@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eyeclinic.Modals.PatientPreview;
+package eyeclinic.Pages.PatientPreview;
 
-import eyeclinic.Components.TreatmentItem.TreatmentItem;
-import eyeclinic.Modals.PatientForm.PatientForm;
-import eyeclinic.Modals.TreatmentForm.TreatmentForm;
+import eyeclinic.UIComponents.TreatmentItem.TreatmentItem;
+import eyeclinic.Pages.PatientForm.PatientForm;
+import eyeclinic.Pages.TreatmentForm.TreatmentForm;
 import eyeclinic.Patient;
 import eyeclinic.Stores.ModalsStore;
 import eyeclinic.Stores.TreatmentsStore;
