@@ -8,7 +8,6 @@ package eyeclinic.Pages.App;
 import eyeclinic.UIComponents.AppointmentsList.AppointmentsList;
 import eyeclinic.UIComponents.PatientsList.PatientsList;
 import eyeclinic.Stores.AuthStore;
-import java.util.HashMap;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
@@ -19,7 +18,6 @@ import javafx.scene.layout.VBox;
  */
 public class Controller {
 
-    private HashMap<String, VBox> contentLayouts = new HashMap<>();
     public Button logOutButton;
     public Button appointmentsListButton, patientsListButton;
     public VBox contentWrapper;
