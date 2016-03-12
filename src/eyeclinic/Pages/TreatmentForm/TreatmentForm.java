@@ -6,6 +6,7 @@
 package eyeclinic.Pages.TreatmentForm;
 
 import eyeclinic.Pages.PatientPreview.PatientPreview;
+import eyeclinic.Pages.TreatmentPreview.TreatmentPreview;
 import eyeclinic.Patient;
 import eyeclinic.Stores.ModalsStore;
 import eyeclinic.Stores.PatientsStore;
@@ -98,8 +99,7 @@ public class TreatmentForm extends BorderPane {
             // close the modal
             ModalsStore.closeModal();
         } else {
-            System.out.println("To be implemented");
-//            ModalsStore.showModal(new Scene(new TreatmentPreview(this.treatment)), false);
+            ModalsStore.showModal(new Scene(new TreatmentPreview(this.treatment)), false);
         }
         
     }
