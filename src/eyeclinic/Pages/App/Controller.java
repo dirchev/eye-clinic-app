@@ -5,8 +5,8 @@
  */
 package eyeclinic.Pages.App;
 
-import eyeclinic.Components.AppointmentsList.AppointmentsList;
-import eyeclinic.Components.PatientsList.PatientsList;
+import eyeclinic.UIComponents.AppointmentsList.AppointmentsList;
+import eyeclinic.UIComponents.PatientsList.PatientsList;
 import eyeclinic.Stores.AuthStore;
 import java.util.HashMap;
 import javafx.scene.control.Button;

@@ -5,9 +5,7 @@
  */
 package eyeclinic.Stores;
 
-import java.util.HashMap;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -56,7 +54,7 @@ public class ModalsStore {
 
         //Block events to other modals
         modal.initModality(Modality.APPLICATION_MODAL);
-        modal.setTitle("Something");
+        modal.setTitle("Eye Clinic");
         modal.setMinWidth(250);
 
         //Display modal and wait for it to be closed before returning
