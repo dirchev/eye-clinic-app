@@ -3,34 +3,41 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eyeclinic.Pages.App.PatientsList;
+package eyeclinic.Components.PatientsList;
 
 import eyeclinic.Components.PatientItem.PatientItem;
 import eyeclinic.Modals.PatientForm.PatientForm;
 import eyeclinic.Patient;
 import eyeclinic.Stores.ModalsStore;
 import eyeclinic.Stores.PatientsStore;
-import java.net.URL;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
 /**
- * FXML PatientsListController class
+ * FXML PatientsList class
  *
  * @author dirchev
  */
-public class PatientsListController implements Initializable {
+public class PatientsList extends VBox {
 
     public VBox container = new VBox();
     public TextField patientSearchField;
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public PatientsList() {
+        super();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PatientsListView.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+        try {
+            fxmlLoader.load();
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
         updatePatientsList();
     }
     
