@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eyeclinic.Components.TreatmentItem;
+package eyeclinic.UIComponents.TreatmentItem;
 
-import eyeclinic.Modals.TreatmentPreview.TreatmentPreview;
+import eyeclinic.Pages.TreatmentPreview.TreatmentPreview;
 import eyeclinic.Stores.ModalsStore;
 import eyeclinic.Treatment;
 import java.io.IOException;

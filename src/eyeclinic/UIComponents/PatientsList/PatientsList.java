@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eyeclinic.Components.PatientsList;
+package eyeclinic.UIComponents.PatientsList;
 
-import eyeclinic.Components.PatientItem.PatientItem;
-import eyeclinic.Modals.PatientForm.PatientForm;
+import eyeclinic.UIComponents.PatientItem.PatientItem;
+import eyeclinic.Pages.PatientForm.PatientForm;
 import eyeclinic.Patient;
 import eyeclinic.Stores.ModalsStore;
 import eyeclinic.Stores.PatientsStore;
