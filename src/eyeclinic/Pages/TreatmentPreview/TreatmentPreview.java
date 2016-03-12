@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eyeclinic.Pages.TreatmentPreview;
+package eyeclinic.Modals.TreatmentPreview;
 
-import eyeclinic.Pages.PatientPreview.PatientPreview;
-import eyeclinic.Pages.TreatmentForm.TreatmentForm;
+import eyeclinic.Modals.PatientPreview.PatientPreview;
+import eyeclinic.Modals.TreatmentForm.TreatmentForm;
 import eyeclinic.Stores.ModalsStore;
 import eyeclinic.Treatment;
 import java.io.IOException;

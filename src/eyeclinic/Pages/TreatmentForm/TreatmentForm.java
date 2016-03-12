@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eyeclinic.Pages.TreatmentForm;
+package eyeclinic.Modals.TreatmentForm;
 
-import eyeclinic.Pages.PatientPreview.PatientPreview;
+import eyeclinic.Modals.PatientPreview.PatientPreview;
 import eyeclinic.Patient;
 import eyeclinic.Stores.ModalsStore;
 import eyeclinic.Stores.PatientsStore;
