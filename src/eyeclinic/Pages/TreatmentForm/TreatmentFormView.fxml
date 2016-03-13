@@ -27,7 +27,7 @@
                   <Insets top="10.0" />
                </HBox.margin></Region>
             <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancelCreation" text="Cancel" />
-            <Button mnemonicParsing="false" onAction="#handleSubmit" text="Create" />
+            <Button mnemonicParsing="false" onAction="#handleSubmit" text="Save" />
          </children>
          <BorderPane.margin>
             <Insets />
