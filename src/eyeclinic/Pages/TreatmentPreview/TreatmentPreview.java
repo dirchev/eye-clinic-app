@@ -5,10 +5,14 @@
  */
 package eyeclinic.Pages.TreatmentPreview;
 
+import eyeclinic.Appointment;
+import eyeclinic.Pages.AppointmentForm.AppointmentForm;
 import eyeclinic.Pages.PatientPreview.PatientPreview;
 import eyeclinic.Pages.TreatmentForm.TreatmentForm;
+import eyeclinic.Stores.AppointmentsStore;
 import eyeclinic.Stores.ModalsStore;
 import eyeclinic.Treatment;
+import eyeclinic.UIComponents.AppointmentItem.AppointmentItem;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,6 +27,7 @@ import javafx.scene.layout.VBox;
 public class TreatmentPreview extends VBox {
     public Label treatmentTitleLabel;
     public Label patientNameLabel;
+    public VBox appointmentsContainer;
     
     private Treatment treatment;
     
@@ -38,6 +43,7 @@ public class TreatmentPreview extends VBox {
         this.treatment = treatment;
         patientNameLabel.setText(treatment.getPatient().getFullName());
         treatmentTitleLabel.setText(treatment.getTitle());
+        updateAppointmentsList();
     }
     
     public void editTreatment () {
@@ -51,11 +57,16 @@ public class TreatmentPreview extends VBox {
     public void viewPatient () {
         ModalsStore.showModal(new Scene(new PatientPreview(this.treatment.getPatient())), false);
     }
+    
+    public void createAppointment () {
+        ModalsStore.showModal(new Scene(new AppointmentForm(this.treatment)), false);
+        updateAppointmentsList();
+    }
 
-//    private void updateTreatmentsList() {
-//        treatmentsContainer.getChildren().clear();
-//        for (Treatment treatment : TreatmentsStore.getTreatmentsForPatient(this.patient)) {
-//            treatmentsContainer.getChildren().add(new TreatmentItem(treatment));
-//        }
-//    }
+    private void updateAppointmentsList() {
+        appointmentsContainer.getChildren().clear();
+        for (Appointment appointment : AppointmentsStore.getAppointmentsForTreatment(this.treatment)) {
+            appointmentsContainer.getChildren().add(new AppointmentItem(appointment));
+        }
+    }
 }
