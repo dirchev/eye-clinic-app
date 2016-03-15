@@ -8,6 +8,9 @@ package eyeclinic.Pages.App;
 import eyeclinic.UIComponents.AppointmentsList.AppointmentsList;
 import eyeclinic.UIComponents.PatientsList.PatientsList;
 import eyeclinic.Stores.AuthStore;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
@@ -16,11 +19,16 @@ import javafx.scene.layout.VBox;
  *
  * @author dirchev
  */
-public class Controller {
+public class Controller implements Initializable {
 
     public Button logOutButton;
     public Button appointmentsListButton, patientsListButton;
     public VBox contentWrapper;
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        this.openAppointmentsList();
+    }
     
     public void logOut () {
         AuthStore.logOut();
