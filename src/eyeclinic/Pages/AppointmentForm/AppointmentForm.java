@@ -9,7 +9,7 @@ import eyeclinic.Appointment;
 import eyeclinic.Pages.TreatmentPreview.TreatmentPreview;
 import eyeclinic.Patient;
 import eyeclinic.Stores.AppointmentsStore;
-import eyeclinic.Stores.ModalsStore;
+import eyeclinic.Helpers.ModalsHelper;
 import eyeclinic.Treatment;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -105,8 +105,8 @@ public class AppointmentForm extends BorderPane {
         } else {
             this.updateAppointment();
         }
-//        ModalsStore.showModal(new Scene(new AppointmentPreview(this.appointment)), false);
-        ModalsStore.showModal(new Scene(new TreatmentPreview(this.treatment)), false);
+//        ModalsHelper.showModal(new Scene(new AppointmentPreview(this.appointment)), false);
+        ModalsHelper.showModal(new Scene(new TreatmentPreview(this.treatment)), false);
     }
     
     private void createAppointment () {
@@ -125,12 +125,11 @@ public class AppointmentForm extends BorderPane {
         // TODO check for alert result
         if (this.appointment == null) {
             // close the modal
-            ModalsStore.closeModal();
+            ModalsHelper.closeModal();
         } else {
-//            ModalsStore.showModal(new Scene(new AppointmentPreview(this.appointment)), false);
-        ModalsStore.showModal(new Scene(new TreatmentPreview(this.treatment)), false);
+//            ModalsHelper.showModal(new Scene(new AppointmentPreview(this.appointment)), false);
+        ModalsHelper.showModal(new Scene(new TreatmentPreview(this.treatment)), false);
         }
         
     }
-    
 }

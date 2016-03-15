@@ -9,7 +9,7 @@ import eyeclinic.UIComponents.TreatmentItem.TreatmentItem;
 import eyeclinic.Pages.PatientForm.PatientForm;
 import eyeclinic.Pages.TreatmentForm.TreatmentForm;
 import eyeclinic.Patient;
-import eyeclinic.Stores.ModalsStore;
+import eyeclinic.Helpers.ModalsHelper;
 import eyeclinic.Stores.TreatmentsStore;
 import eyeclinic.Treatment;
 import java.io.IOException;
@@ -53,15 +53,15 @@ public class PatientPreview extends VBox {
     }
     
     public void editPatient () {
-        ModalsStore.showModal(new Scene(new PatientForm(this.patient)), false);
+        ModalsHelper.showModal(new Scene(new PatientForm(this.patient)), false);
     }
     public void newTreatment () {
-        ModalsStore.showModal(new Scene(new TreatmentForm(this.patient)), false);
+        ModalsHelper.showModal(new Scene(new TreatmentForm(this.patient)), false);
         updateTreatmentsList();
     }
     
     public void close () {
-        ModalsStore.closeModal();
+        ModalsHelper.closeModal();
     }
 
     private void updateTreatmentsList() {

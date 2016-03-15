@@ -7,7 +7,7 @@ package eyeclinic.UIComponents.PatientItem;
 
 import eyeclinic.Pages.PatientPreview.PatientPreview;
 import eyeclinic.Patient;
-import eyeclinic.Stores.ModalsStore;
+import eyeclinic.Helpers.ModalsHelper;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -50,7 +50,7 @@ public class PatientItem extends VBox {
         Stage modal = new Stage();
         
         // Keep a reference to currently opened modal
-        ModalsStore.setOpenedModal(modal);
+        ModalsHelper.setOpenedModal(modal);
 
         //Block events to other modals
         modal.initModality(Modality.APPLICATION_MODAL);

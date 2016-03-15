@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eyeclinic.Stores;
+package eyeclinic.Helpers;
 
 import javafx.scene.Scene;
 import javafx.stage.Modality;
@@ -13,36 +13,36 @@ import javafx.stage.Stage;
  *
  * @author dirchev
  */
-public class ModalsStore {
+public class ModalsHelper {
     private static Stage openedModal = null;
 
     public static void setOpenedModal(Stage openedModal) {
-        ModalsStore.openedModal = openedModal;
+        ModalsHelper.openedModal = openedModal;
     }
     
     public static void showModal (Scene scene) {
-        ModalsStore.modalInCurrentWindow(scene);
+        ModalsHelper.modalInCurrentWindow(scene);
     }
     
     public static void showModal (Scene scene, Boolean createNewWindow) {
         if (createNewWindow) {
-            ModalsStore.modalInNewWindow(scene);
+            ModalsHelper.modalInNewWindow(scene);
         } else {
-            ModalsStore.modalInCurrentWindow(scene);
+            ModalsHelper.modalInCurrentWindow(scene);
         }
     }
     
     public static void closeModal () {
-        ModalsStore.openedModal.close();
-        ModalsStore.openedModal = null;
+        ModalsHelper.openedModal.close();
+        ModalsHelper.openedModal = null;
     }
 
     private static void modalInCurrentWindow(Scene scene) {
-        Stage modal = ModalsStore.openedModal;
+        Stage modal = ModalsHelper.openedModal;
         if (modal == null) {
-            ModalsStore.modalInNewWindow(scene);
+            ModalsHelper.modalInNewWindow(scene);
         } else {
-            ModalsStore.openedModal.setScene(scene);
+            ModalsHelper.openedModal.setScene(scene);
         }
     }
     
@@ -50,7 +50,7 @@ public class ModalsStore {
         Stage modal = new Stage();
         
         // Keep a reference to currently opened modal
-        ModalsStore.openedModal = modal;
+        ModalsHelper.openedModal = modal;
 
         //Block events to other modals
         modal.initModality(Modality.APPLICATION_MODAL);

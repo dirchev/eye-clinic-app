@@ -6,7 +6,7 @@
 package eyeclinic.UIComponents.TreatmentItem;
 
 import eyeclinic.Pages.TreatmentPreview.TreatmentPreview;
-import eyeclinic.Stores.ModalsStore;
+import eyeclinic.Helpers.ModalsHelper;
 import eyeclinic.Treatment;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
@@ -41,6 +41,6 @@ public class TreatmentItem extends VBox {
     }
     
     public void previewTreatment () {
-        ModalsStore.showModal(new Scene(new TreatmentPreview(this.treatment)), false);
+        ModalsHelper.showModal(new Scene(new TreatmentPreview(this.treatment)), false);
     }
 }

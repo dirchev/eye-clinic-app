@@ -7,7 +7,7 @@ package eyeclinic.Pages.App;
 
 import eyeclinic.UIComponents.AppointmentsList.AppointmentsList;
 import eyeclinic.UIComponents.PatientsList.PatientsList;
-import eyeclinic.Stores.AuthStore;
+import eyeclinic.Helpers.AuthHelper;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -31,7 +31,7 @@ public class Controller implements Initializable {
     }
     
     public void logOut () {
-        AuthStore.logOut();
+        AuthHelper.logOut();
     }
     
     public void openAppointmentsList () {

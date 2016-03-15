@@ -8,7 +8,7 @@ package eyeclinic.Pages.TreatmentForm;
 import eyeclinic.Pages.PatientPreview.PatientPreview;
 import eyeclinic.Pages.TreatmentPreview.TreatmentPreview;
 import eyeclinic.Patient;
-import eyeclinic.Stores.ModalsStore;
+import eyeclinic.Helpers.ModalsHelper;
 import eyeclinic.Stores.TreatmentsStore;
 import eyeclinic.Treatment;
 import java.io.IOException;
@@ -76,7 +76,7 @@ public class TreatmentForm extends BorderPane {
         } else {
             this.updateTreatment();
         }
-        ModalsStore.showModal(new Scene(new PatientPreview(this.patient)), false);
+        ModalsHelper.showModal(new Scene(new PatientPreview(this.patient)), false);
     }
     
     private void createTreatment () {
@@ -94,9 +94,9 @@ public class TreatmentForm extends BorderPane {
         // TODO check for alert result
         if (this.treatment == null) {
             // close the modal
-            ModalsStore.closeModal();
+            ModalsHelper.closeModal();
         } else {
-            ModalsStore.showModal(new Scene(new TreatmentPreview(this.treatment)), false);
+            ModalsHelper.showModal(new Scene(new TreatmentPreview(this.treatment)), false);
         }
         
     }

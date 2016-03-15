@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eyeclinic.Stores;
+package eyeclinic.Helpers;
 
 import eyeclinic.Main;
 import eyeclinic.Staff;
@@ -12,21 +12,20 @@ import eyeclinic.Staff;
  *
  * @author dirchev
  */
-public class AuthStore {
+public class AuthHelper {
     private static Staff loggedInUser;
-
+    
     public static Staff getLoggedInUser() {
         return loggedInUser;
     }
 
     public static void setLoggedInUser(Staff loggedInUser) throws Exception {
-        AuthStore.loggedInUser = loggedInUser;
+        AuthHelper.loggedInUser = loggedInUser;
         Main.window.setScene(Main.scenes.get("app"));
     }
     
     public static void logOut() {
-        AuthStore.loggedInUser = null;
+        AuthHelper.loggedInUser = null;
         Main.window.setScene(Main.scenes.get("login"));
     }
-    
 }

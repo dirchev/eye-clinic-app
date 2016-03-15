@@ -8,7 +8,7 @@ package eyeclinic.UIComponents.PatientsList;
 import eyeclinic.UIComponents.PatientItem.PatientItem;
 import eyeclinic.Pages.PatientForm.PatientForm;
 import eyeclinic.Patient;
-import eyeclinic.Stores.ModalsStore;
+import eyeclinic.Helpers.ModalsHelper;
 import eyeclinic.Stores.PatientsStore;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,7 +52,7 @@ public class PatientsList extends VBox {
     
     private void updatePatientsListContents (ArrayList<Patient> patients) {
         container.getChildren().clear();
-        if (patients.size() == 0) {
+        if (patients.isEmpty()) {
             Label message = new Label("No patients found...");
             container.getChildren().add(message); 
         } else {
@@ -63,7 +63,7 @@ public class PatientsList extends VBox {
     }
     
     public void createPatientButtonHandler () {
-        ModalsStore.showModal(new Scene(new PatientForm()));
+        ModalsHelper.showModal(new Scene(new PatientForm()));
         updatePatientsList();
     }
 }

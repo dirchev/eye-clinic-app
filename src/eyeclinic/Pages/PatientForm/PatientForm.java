@@ -7,7 +7,7 @@ package eyeclinic.Pages.PatientForm;
 
 import eyeclinic.Pages.PatientPreview.PatientPreview;
 import eyeclinic.Patient;
-import eyeclinic.Stores.ModalsStore;
+import eyeclinic.Helpers.ModalsHelper;
 import eyeclinic.Stores.PatientsStore;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 
 /**
  * FXML PatientForm class
@@ -69,7 +68,7 @@ public class PatientForm extends BorderPane {
         } else {
             this.updatePatient();
         }
-        ModalsStore.showModal(new Scene(new PatientPreview(this.patient)), false);
+        ModalsHelper.showModal(new Scene(new PatientPreview(this.patient)), false);
     }
     
     private void createPatient () {
@@ -93,9 +92,9 @@ public class PatientForm extends BorderPane {
         // TODO check for alert result
         if (this.patient == null) {
             // close the modal
-            ModalsStore.closeModal();
+            ModalsHelper.closeModal();
         } else {
-            ModalsStore.showModal(new Scene(new PatientPreview(this.patient)), false);
+            ModalsHelper.showModal(new Scene(new PatientPreview(this.patient)), false);
         }
         
     }

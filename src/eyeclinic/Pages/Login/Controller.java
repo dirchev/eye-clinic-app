@@ -6,7 +6,7 @@
 package eyeclinic.Pages.Login;
 
 import eyeclinic.Staff;
-import eyeclinic.Stores.AuthStore;
+import eyeclinic.Helpers.AuthHelper;
 import eyeclinic.Stores.StaffStore;
 
 import javafx.scene.control.Button;
@@ -32,7 +32,7 @@ public class Controller {
         
         Staff user = StaffStore.findByCredentials(username, password);
         if (user != null) {
-            AuthStore.setLoggedInUser(user);
+            AuthHelper.setLoggedInUser(user);
         } else {
             Label errorMessageLabel = new Label("Wrong username or password");
             errorMessageLabel.setTextFill(Paint.valueOf("#FF0000"));

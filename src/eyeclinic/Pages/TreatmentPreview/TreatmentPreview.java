@@ -10,7 +10,7 @@ import eyeclinic.Pages.AppointmentForm.AppointmentForm;
 import eyeclinic.Pages.PatientPreview.PatientPreview;
 import eyeclinic.Pages.TreatmentForm.TreatmentForm;
 import eyeclinic.Stores.AppointmentsStore;
-import eyeclinic.Stores.ModalsStore;
+import eyeclinic.Helpers.ModalsHelper;
 import eyeclinic.Treatment;
 import eyeclinic.UIComponents.AppointmentItem.AppointmentItem;
 import java.io.IOException;
@@ -47,19 +47,19 @@ public class TreatmentPreview extends VBox {
     }
     
     public void editTreatment () {
-        ModalsStore.showModal(new Scene(new TreatmentForm(this.treatment)), false);
+        ModalsHelper.showModal(new Scene(new TreatmentForm(this.treatment)), false);
     }
     
     public void close () {
-        ModalsStore.closeModal();
+        ModalsHelper.closeModal();
     }
     
     public void viewPatient () {
-        ModalsStore.showModal(new Scene(new PatientPreview(this.treatment.getPatient())), false);
+        ModalsHelper.showModal(new Scene(new PatientPreview(this.treatment.getPatient())), false);
     }
     
     public void createAppointment () {
-        ModalsStore.showModal(new Scene(new AppointmentForm(this.treatment)), false);
+        ModalsHelper.showModal(new Scene(new AppointmentForm(this.treatment)), false);
         updateAppointmentsList();
     }
 
