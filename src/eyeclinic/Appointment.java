@@ -14,8 +14,8 @@ import java.util.Date;
 public class Appointment {
     private Date startDate;
     private Date endDate;
-    private Patient patient;
-    private Treatment treatment;
+    private final Patient patient;
+    private final Treatment treatment;
     private Staff optician;
     
     public Appointment (Treatment treatment, Date startDate, Date endDate) {
