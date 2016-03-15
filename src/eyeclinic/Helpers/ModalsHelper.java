@@ -59,6 +59,7 @@ public class ModalsHelper {
 
         //Display modal and wait for it to be closed before returning
         modal.setScene(scene);
+        modal.setOnHiding((e) -> ModalsHelper.openedModal = null);
         modal.showAndWait();
     }
 }
