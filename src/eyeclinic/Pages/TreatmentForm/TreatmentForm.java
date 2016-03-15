@@ -9,7 +9,6 @@ import eyeclinic.Pages.PatientPreview.PatientPreview;
 import eyeclinic.Pages.TreatmentPreview.TreatmentPreview;
 import eyeclinic.Patient;
 import eyeclinic.Stores.ModalsStore;
-import eyeclinic.Stores.PatientsStore;
 import eyeclinic.Stores.TreatmentsStore;
 import eyeclinic.Treatment;
 import java.io.IOException;
@@ -19,8 +18,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-
 /**
  * FXML PatientForm class
  *
