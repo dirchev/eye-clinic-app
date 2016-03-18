@@ -6,14 +6,14 @@
 package eyeclinic.Pages.AppointmentForm;
 
 import eyeclinic.Appointment;
-import eyeclinic.Pages.TreatmentPreview.TreatmentPreview;
 import eyeclinic.Patient;
 import eyeclinic.Stores.AppointmentsStore;
 import eyeclinic.Helpers.ModalsHelper;
+import eyeclinic.Pages.AppointmentPreview.AppointmentPreview;
 import eyeclinic.Treatment;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.HashMap;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +23,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.util.converter.LocalDateTimeStringConverter;
 
 /**
  * FXML PatientForm class
@@ -72,6 +71,14 @@ public class AppointmentForm extends BorderPane {
         this.appointment = appointment;
         this.treatment = appointment.getTreatment();
         this.patient = appointment.getPatient();
+        
+        // populate fields to be ready for editing
+        dateField.setValue(this.appointment.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        startTimeHourField.setText(String.valueOf(this.appointment.getStartDate().getHours()));
+        startTimeMinuteField.setText(String.valueOf(this.appointment.getStartDate().getMinutes()));
+        endTimeHourField.setText(String.valueOf(this.appointment.getEndDate().getHours()));
+        endTimeMinuteField.setText(String.valueOf(this.appointment.getEndDate().getMinutes()));
+        
         this.setLabels();
     }
     
@@ -105,13 +112,13 @@ public class AppointmentForm extends BorderPane {
         } else {
             this.updateAppointment();
         }
-//        ModalsHelper.showModal(new Scene(new AppointmentPreview(this.appointment)), false);
-        ModalsHelper.showModal(new Scene(new TreatmentPreview(this.treatment)), false);
+        ModalsHelper.showModal(new Scene(new AppointmentPreview(this.appointment)), false);
     }
     
     private void createAppointment () {
         HashMap<String, Date> dates = this.getDates();
-        AppointmentsStore.getAppointments().add(new Appointment(this.treatment, dates.get("startDate"), dates.get("endDate")));
+        this.appointment = new Appointment(this.treatment, dates.get("startDate"), dates.get("endDate"));
+        AppointmentsStore.getAppointments().add(this.appointment);
     }
     
     private void updateAppointment () {
@@ -127,8 +134,7 @@ public class AppointmentForm extends BorderPane {
             // close the modal
             ModalsHelper.closeModal();
         } else {
-//            ModalsHelper.showModal(new Scene(new AppointmentPreview(this.appointment)), false);
-        ModalsHelper.showModal(new Scene(new TreatmentPreview(this.treatment)), false);
+            ModalsHelper.showModal(new Scene(new AppointmentPreview(this.appointment)), false);
         }
         
     }
