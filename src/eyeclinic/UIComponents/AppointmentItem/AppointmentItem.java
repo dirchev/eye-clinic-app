@@ -8,6 +8,7 @@ package eyeclinic.UIComponents.AppointmentItem;
 import eyeclinic.Appointment;
 import eyeclinic.Pages.PatientPreview.PatientPreview;
 import eyeclinic.Helpers.ModalsHelper;
+import eyeclinic.Pages.AppointmentPreview.AppointmentPreview;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -44,21 +45,21 @@ public class AppointmentItem extends VBox {
     }
     
     public void previewAppointment () {
-//        Scene modalContent = new Scene(new AppointmentPreview(appointment));
-//        
-//        Stage modal = new Stage();
-//        
-//        // Keep a reference to currently opened modal
-//        ModalsHelper.setOpenedModal(modal);
-//
-//        //Block events to other modals
-//        modal.initModality(Modality.APPLICATION_MODAL);
-//        modal.setTitle("Appointment Preview");
-//        modal.setMinWidth(250);
-//
-//        //Display modal and wait for it to be closed before returning
-//        modal.setScene(modalContent);
-//        modal.showAndWait();
+        Scene modalContent = new Scene(new AppointmentPreview(appointment));
+        
+        Stage modal = new Stage();
+        
+        // Keep a reference to currently opened modal
+        ModalsHelper.setOpenedModal(modal);
+
+        //Block events to other modals
+        modal.initModality(Modality.APPLICATION_MODAL);
+        modal.setTitle("Appointment Preview");
+        modal.setMinWidth(250);
+
+        //Display modal and wait for it to be closed before returning
+        modal.setScene(modalContent);
+        modal.showAndWait();
     }
     
 }
