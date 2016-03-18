@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eyeclinic.Pages.TreatmentPreview;
+package eyeclinic.Pages.AppointmentPreview;
 
 import eyeclinic.Appointment;
 import eyeclinic.Pages.AppointmentForm.AppointmentForm;
 import eyeclinic.Pages.PatientPreview.PatientPreview;
-import eyeclinic.Pages.TreatmentForm.TreatmentForm;
-import eyeclinic.Stores.AppointmentsStore;
 import eyeclinic.Helpers.ModalsHelper;
-import eyeclinic.Treatment;
-import eyeclinic.UIComponents.AppointmentItem.AppointmentItem;
+import eyeclinic.Pages.TreatmentPreview.TreatmentPreview;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -24,15 +22,18 @@ import javafx.scene.layout.VBox;
  *
  * @author dirchev
  */
-public class TreatmentPreview extends VBox {
-    public Label treatmentTitleLabel;
+public class AppointmentPreview extends VBox {
+    
+    public Label appointmentStartDateLabel;
+    public Label appointmentEndDateLabel;
     public Label patientNameLabel;
-    public VBox appointmentsContainer;
+    public Label treatmentTitleLabel;
+    public Label treatmentStatusLabel;
     
-    private Treatment treatment;
+    private Appointment appointment;
     
-    public TreatmentPreview (Treatment treatment) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TreatmentPreviewView.fxml"));
+    public AppointmentPreview (Appointment appointment) {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AppointmentPreviewView.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {
@@ -40,14 +41,26 @@ public class TreatmentPreview extends VBox {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        this.treatment = treatment;
-        patientNameLabel.setText(treatment.getPatient().getFullName());
-        treatmentTitleLabel.setText(treatment.getTitle());
-        updateAppointmentsList();
+        this.appointment = appointment;
+        initializeLayout();
     }
     
-    public void editTreatment () {
-        ModalsHelper.showModal(new Scene(new TreatmentForm(this.treatment)), false);
+    private void initializeLayout () {
+        // appointment dates
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, MMM d 'at' HH:mm");
+        appointmentStartDateLabel.setText(dateFormat.format(appointment.getStartDate()));
+        appointmentEndDateLabel.setText(dateFormat.format(appointment.getEndDate()));
+        
+        // patient
+        patientNameLabel.setText(appointment.getPatient().getFullName());
+        
+        // treatment
+        treatmentTitleLabel.setText(appointment.getTreatment().getTitle());
+        treatmentStatusLabel.setText(appointment.getTreatment().getStatus());
+    }
+    
+    public void editAppointment () {
+        ModalsHelper.showModal(new Scene(new AppointmentForm(this.appointment)), false);
     }
     
     public void close () {
@@ -55,18 +68,9 @@ public class TreatmentPreview extends VBox {
     }
     
     public void viewPatient () {
-        ModalsHelper.showModal(new Scene(new PatientPreview(this.treatment.getPatient())), false);
+        ModalsHelper.showModal(new Scene(new PatientPreview(this.appointment.getPatient())), false);
     }
-    
-    public void createAppointment () {
-        ModalsHelper.showModal(new Scene(new AppointmentForm(this.treatment)), false);
-        updateAppointmentsList();
-    }
-
-    private void updateAppointmentsList() {
-        appointmentsContainer.getChildren().clear();
-        for (Appointment appointment : AppointmentsStore.getAppointmentsForTreatment(this.treatment)) {
-            appointmentsContainer.getChildren().add(new AppointmentItem(appointment));
-        }
+    public void viewTreatment () {
+        ModalsHelper.showModal(new Scene(new TreatmentPreview(this.appointment.getTreatment())), false);
     }
 }
