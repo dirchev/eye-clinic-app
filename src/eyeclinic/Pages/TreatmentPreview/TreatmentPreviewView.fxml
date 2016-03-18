@@ -62,9 +62,9 @@
                </padding>
             </HBox>
             <ScrollPane prefHeight="200.0" prefWidth="200.0">
-               <content>
-                  <VBox fx:id="appointmentsContainer" prefHeight="142.0" prefWidth="556.0" />
-               </content>
+                <content>
+                    <VBox fx:id="appointmentsContainer" alignment="CENTER" spacing="5.0" />
+                </content>
             </ScrollPane>
          </children>
       </VBox>
