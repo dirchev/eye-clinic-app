@@ -7,10 +7,10 @@ package eyeclinic;
  * @author dirchev
  */
 public class Staff {
-    private String username;
-    private String password;
-    private String fullName;
-    private String role; // "receptionist" or "optician"
+    private final String username;
+    private final String password;
+    private final String fullName;
+    private final String role; // "receptionist" or "optician"
     
     /**
      * Creates new receptionist.
