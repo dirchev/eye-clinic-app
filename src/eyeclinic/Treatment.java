@@ -1,68 +1,81 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package eyeclinic;
 
 import java.util.ArrayList;
 
 /**
- *
+ * Implementation of Treatment interface.
+ * <p>
+ * Treatments are used to hold a similar appointments for a patient. 
+ * <p>
+ * For example if a patient wants to have an eye check, a new `eye check` treatment will be created.
+ * The treatment might have 2 appointments in it: one for the eye test and another for discussing the test results with an optician.
+ * 
  * @author dirchev
  */
 public class Treatment {
     private String title;
     private String status;
-    private Patient patient;
-    private ArrayList<Note> notes;
-    private ArrayList<Appointment> appointments;
+    private final Patient patient;
+    private final ArrayList<Appointment> appointments;
 
+    /**
+     * Creates new treatment for a patient. The initial status is pending
+     * @param title the title of the treatment (ex. `an eye check`)
+     * @param patient the patient, which this treatment is created for
+     */
     public Treatment(String title, Patient patient) {
+        this.appointments = new ArrayList<>();
         this.title = title;
         this.status = "pending";
         this.patient = patient;
     }
 
+    /**
+     * Returns the title of the treatment
+     * @return the title of the treatment
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Updates the title of the treatment
+     * @param title new title to override the old one
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * Returns the status of the treatment
+     * @return the status of the treatment
+     */
     public String getStatus() {
         return status;
     }
 
+    /**
+     * Updates the status of the treatment
+     * @param status new version of the status to be updated
+     */
     public void setStatus(String status) {
         this.status = status;
     }
 
+    /**
+     * Returns the Patient object, which this treatment is for 
+     * @return the Patient 
+     */
     public Patient getPatient() {
         return patient;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
-    public ArrayList<Note> getNotes() {
-        return notes;
-    }
-
-    public void setNotes(ArrayList<Note> notes) {
-        this.notes = notes;
-    }
-
+    /**
+     * Returns all appointments, associated with this treatment
+     * @return list of the treatment appointments
+     */
     public ArrayList<Appointment> getAppointments() {
         return appointments;
-    }
-
-    public void setAppointments(ArrayList<Appointment> appointments) {
-        this.appointments = appointments;
-    }
-    
+    }    
     
 }
