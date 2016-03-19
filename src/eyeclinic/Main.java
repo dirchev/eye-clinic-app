@@ -6,19 +6,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
+ * The start point of the eye clinic application. Initialises the window object and starts the GUI.
  * @author dirchev
  */
 public class Main extends Application {
     
+    /**
+     * The base Stage of the application
+     */
     public static Stage window;
+
+    /**
+     * The scenes, that are available in the application's GUI. (will be deprecated in future version)
+     */
     public static HashMap<String, Scene> scenes = new HashMap<>();
     
     @Override
