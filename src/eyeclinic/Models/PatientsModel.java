@@ -9,11 +9,11 @@ import eyeclinic.Patient;
 import java.util.ArrayList;
 
 /**
- *
+ * PatientsModel takes care of storing all patients during application usage
  * @author dirchev
  */
 public class PatientsModel {
-    private static ArrayList<Patient> patients = new ArrayList<>();
+    private static final ArrayList<Patient> patients = new ArrayList<>();
 
     static {
         PatientsModel.patients.add(new Patient("John Cena", "0123456789", "Galsgow", "john.cena@gmail.com"));
@@ -23,14 +23,19 @@ public class PatientsModel {
         PatientsModel.patients.add(new Patient("Dr Something", "0123456780", "America!", "house@gmail.com"));
     }
     
+    /**
+     * Returns all patients in the system
+     * @return all patients
+     */
     public static ArrayList<Patient> getPatients() {
         return patients;
     }
 
-    public static void setPatients(ArrayList<Patient> patients) {
-        PatientsModel.patients = patients;
-    }
-
+    /**
+     * Returns only patients, whom name contain the given string. Not case-sensitive!
+     * @param searchText text, which to be used in the filtering
+     * @return list of patients, whom name contain the given string
+     */
     public static ArrayList<Patient> searchByName(String searchText) {
         ArrayList<Patient> foundPatients = new ArrayList<>();
         for (Patient p : patients) {
