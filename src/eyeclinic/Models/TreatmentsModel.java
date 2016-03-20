@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package eyeclinic.Stores;
+package eyeclinic.Models;
 
 import eyeclinic.Patient;
 import eyeclinic.Treatment;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author dirchev
  */
-public class TreatmentsStore {
+public class TreatmentsModel {
     private static ArrayList<Treatment> treatments = new ArrayList<>();
 
     public static ArrayList<Treatment> getTreatments() {
@@ -21,12 +21,12 @@ public class TreatmentsStore {
     }
 
     public static void setTreatments(ArrayList<Treatment> treatments) {
-        TreatmentsStore.treatments = treatments;
+        TreatmentsModel.treatments = treatments;
     }
     
     public static ArrayList<Treatment> getTreatmentsForPatient(Patient patient) {
         ArrayList<Treatment> foundTreatments = new ArrayList<>();
-        for (Treatment treatment : TreatmentsStore.treatments) {
+        for (Treatment treatment : TreatmentsModel.treatments) {
             if (treatment.getPatient().equals(patient)) {
                 foundTreatments.add(treatment);
             }

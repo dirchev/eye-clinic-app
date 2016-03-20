@@ -10,7 +10,7 @@ import eyeclinic.Pages.PatientForm.PatientForm;
 import eyeclinic.Pages.TreatmentForm.TreatmentForm;
 import eyeclinic.Patient;
 import eyeclinic.Helpers.ModalsHelper;
-import eyeclinic.Stores.TreatmentsStore;
+import eyeclinic.Models.TreatmentsModel;
 import eyeclinic.Treatment;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
@@ -66,7 +66,7 @@ public class PatientPreview extends VBox {
 
     private void updateTreatmentsList() {
         treatmentsContainer.getChildren().clear();
-        for (Treatment treatment : TreatmentsStore.getTreatmentsForPatient(this.patient)) {
+        for (Treatment treatment : TreatmentsModel.getTreatmentsForPatient(this.patient)) {
             treatmentsContainer.getChildren().add(new TreatmentItem(treatment));
         }
     }

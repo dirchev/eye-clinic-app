@@ -9,7 +9,7 @@ import eyeclinic.Appointment;
 import eyeclinic.Pages.AppointmentForm.AppointmentForm;
 import eyeclinic.Pages.PatientPreview.PatientPreview;
 import eyeclinic.Pages.TreatmentForm.TreatmentForm;
-import eyeclinic.Stores.AppointmentsStore;
+import eyeclinic.Models.AppointmentsModel;
 import eyeclinic.Helpers.ModalsHelper;
 import eyeclinic.Treatment;
 import eyeclinic.UIComponents.AppointmentItem.AppointmentItem;
@@ -65,7 +65,7 @@ public class TreatmentPreview extends VBox {
 
     private void updateAppointmentsList() {
         appointmentsContainer.getChildren().clear();
-        for (Appointment appointment : AppointmentsStore.getAppointmentsForTreatment(this.treatment)) {
+        for (Appointment appointment : AppointmentsModel.getAppointmentsForTreatment(this.treatment)) {
             appointmentsContainer.getChildren().add(new AppointmentItem(appointment));
         }
     }

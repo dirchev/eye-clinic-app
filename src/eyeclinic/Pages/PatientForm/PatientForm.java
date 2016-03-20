@@ -8,7 +8,7 @@ package eyeclinic.Pages.PatientForm;
 import eyeclinic.Pages.PatientPreview.PatientPreview;
 import eyeclinic.Patient;
 import eyeclinic.Helpers.ModalsHelper;
-import eyeclinic.Stores.PatientsStore;
+import eyeclinic.Models.PatientsModel;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -77,7 +77,7 @@ public class PatientForm extends BorderPane {
         String phone = phoneField.getText();
         String address = addressField.getText();
         this.patient = new Patient(name, phone, address, email);
-        PatientsStore.getPatients().add(this.patient);
+        PatientsModel.getPatients().add(this.patient);
     }
     
     private void updatePatient () {

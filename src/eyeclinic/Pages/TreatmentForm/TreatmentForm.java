@@ -9,7 +9,7 @@ import eyeclinic.Pages.PatientPreview.PatientPreview;
 import eyeclinic.Pages.TreatmentPreview.TreatmentPreview;
 import eyeclinic.Patient;
 import eyeclinic.Helpers.ModalsHelper;
-import eyeclinic.Stores.TreatmentsStore;
+import eyeclinic.Models.TreatmentsModel;
 import eyeclinic.Treatment;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
@@ -82,7 +82,7 @@ public class TreatmentForm extends BorderPane {
     private void createTreatment () {
         String title = titleField.getText();
         this.treatment = new Treatment(title, this.patient);
-        TreatmentsStore.getTreatments().add(this.treatment);
+        TreatmentsModel.getTreatments().add(this.treatment);
     }
     
     private void updateTreatment () {

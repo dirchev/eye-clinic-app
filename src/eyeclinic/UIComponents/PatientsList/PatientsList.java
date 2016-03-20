@@ -9,7 +9,7 @@ import eyeclinic.UIComponents.PatientItem.PatientItem;
 import eyeclinic.Pages.PatientForm.PatientForm;
 import eyeclinic.Patient;
 import eyeclinic.Helpers.ModalsHelper;
-import eyeclinic.Stores.PatientsStore;
+import eyeclinic.Models.PatientsModel;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
@@ -42,12 +42,12 @@ public class PatientsList extends VBox {
     }
     
     public void updatePatientsList () {
-        this.updatePatientsListContents(PatientsStore.getPatients());
+        this.updatePatientsListContents(PatientsModel.getPatients());
     }
     
     public void onSearchFieldUpdate () {
         String searchText = patientSearchField.getText().trim();
-        this.updatePatientsListContents(PatientsStore.searchByName(searchText));
+        this.updatePatientsListContents(PatientsModel.searchByName(searchText));
     }
     
     private void updatePatientsListContents (ArrayList<Patient> patients) {

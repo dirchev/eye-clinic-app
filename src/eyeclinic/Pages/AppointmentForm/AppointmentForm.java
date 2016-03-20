@@ -7,7 +7,7 @@ package eyeclinic.Pages.AppointmentForm;
 
 import eyeclinic.Appointment;
 import eyeclinic.Patient;
-import eyeclinic.Stores.AppointmentsStore;
+import eyeclinic.Models.AppointmentsModel;
 import eyeclinic.Helpers.ModalsHelper;
 import eyeclinic.Pages.AppointmentPreview.AppointmentPreview;
 import eyeclinic.Treatment;
@@ -118,7 +118,7 @@ public class AppointmentForm extends BorderPane {
     private void createAppointment () {
         HashMap<String, Date> dates = this.getDates();
         this.appointment = new Appointment(this.treatment, dates.get("startDate"), dates.get("endDate"));
-        AppointmentsStore.getAppointments().add(this.appointment);
+        AppointmentsModel.getAppointments().add(this.appointment);
     }
     
     private void updateAppointment () {

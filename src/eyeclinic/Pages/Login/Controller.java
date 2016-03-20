@@ -7,7 +7,7 @@ package eyeclinic.Pages.Login;
 
 import eyeclinic.Staff;
 import eyeclinic.Helpers.AuthHelper;
-import eyeclinic.Stores.StaffStore;
+import eyeclinic.Models.StaffModel;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -30,7 +30,7 @@ public class Controller {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
         
-        Staff user = StaffStore.findByCredentials(username, password);
+        Staff user = StaffModel.findByCredentials(username, password);
         if (user != null) {
             AuthHelper.setLoggedInUser(user);
         } else {

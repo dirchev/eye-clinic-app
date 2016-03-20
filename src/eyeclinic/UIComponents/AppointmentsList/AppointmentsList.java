@@ -6,7 +6,7 @@
 package eyeclinic.UIComponents.AppointmentsList;
 
 import eyeclinic.Appointment;
-import eyeclinic.Stores.AppointmentsStore;
+import eyeclinic.Models.AppointmentsModel;
 import eyeclinic.UIComponents.AppointmentItem.AppointmentItem;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class AppointmentsList extends VBox{
     }
     
     public final void updateAppointmentsList () {
-        updateAppointmentsListContents(AppointmentsStore.getAppointments());
+        updateAppointmentsListContents(AppointmentsModel.getAppointments());
     }
     
     private final void updateAppointmentsListContents (ArrayList<Appointment> appointments) {
