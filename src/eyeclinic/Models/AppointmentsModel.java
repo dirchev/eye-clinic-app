@@ -10,20 +10,25 @@ import eyeclinic.Treatment;
 import java.util.ArrayList;
 
 /**
- *
+ * AppointmentsModel takes care of storing all appointments in the application while it is running.
  * @author dirchev
  */
 public class AppointmentsModel {
     private static ArrayList<Appointment> appointments = new ArrayList<>();
 
+    /**
+     * Returns all appointments in the system.
+     * @return all stored appointments
+     */
     public static ArrayList<Appointment> getAppointments() {
         return appointments;
     }
 
-    public static void setAppointments(ArrayList<Appointment> appointments) {
-        AppointmentsModel.appointments = appointments;
-    }
-    
+    /**
+     * Returns all appointments associated with a given treatment.
+     * @param treatment the treatment based on which the appointments will be filtered
+     * @return all appointments associated with the given treatment
+     */
     public static ArrayList<Appointment> getAppointmentsForTreatment (Treatment treatment) {
         ArrayList<Appointment> foundAppointments = new ArrayList<>();
         for (Appointment a : appointments) {
