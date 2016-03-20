@@ -10,20 +10,17 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- *
+ * ModalsHelper takes care of opening, updating and closing secondary windows (also called `Pop-ups` or `Modals`).
  * @author dirchev
  */
 public class ModalsHelper {
     private static Stage openedModal = null;
-
-    public static void setOpenedModal(Stage openedModal) {
-        ModalsHelper.openedModal = openedModal;
-    }
     
-    public static void showModal (Scene scene) {
-        ModalsHelper.modalInCurrentWindow(scene);
-    }
-    
+    /**
+     * Open a scene in secondary window.
+     * @param scene the scene to be shown in the window
+     * @param createNewWindow weather to create new window or use already created one if any
+     */
     public static void showModal (Scene scene, Boolean createNewWindow) {
         if (createNewWindow) {
             ModalsHelper.modalInNewWindow(scene);
@@ -32,6 +29,9 @@ public class ModalsHelper {
         }
     }
     
+    /**
+     * Close secondary window
+     */
     public static void closeModal () {
         ModalsHelper.openedModal.close();
         ModalsHelper.openedModal = null;
