@@ -9,25 +9,31 @@ import eyeclinic.Staff;
 import java.util.ArrayList;
 
 /**
- *
+ * StaffModel takes care of storing all staff members in the system
  * @author dirchev
  */
 public class StaffModel {
-    private static ArrayList<Staff> staff = new ArrayList<>();
+    private static final ArrayList<Staff> staff = new ArrayList<>();
 
     static {
         StaffModel.getStaff().add(new Staff("dirchev", "121212", "Dimitar Mirchev", "optician"));
         StaffModel.getStaff().add(new Staff("john", "121212", "John Cena", "receptionist"));
     }
     
+    /**
+     * Returns all staff members
+     * @return
+     */
     public static ArrayList<Staff> getStaff() {
         return staff;
     }
-
-    public static void setStaff(ArrayList<Staff> staff) {
-        StaffModel.staff = staff;
-    }
     
+    /**
+     * Finds staff member by given credentials. Usually used in authentication. Returns `null` on wrong credentials
+     * @param username username to be searched for
+     * @param password password to be tried for the given username.
+     * @return found staff member or `null`
+     */
     public static Staff findByCredentials (String username, String password) {
         for (Staff member : staff) {
             if (member.checkCredentials(username, password)) {
