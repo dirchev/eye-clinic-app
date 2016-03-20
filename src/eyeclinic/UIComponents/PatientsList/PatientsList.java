@@ -63,7 +63,7 @@ public class PatientsList extends VBox {
     }
     
     public void createPatientButtonHandler () {
-        ModalsHelper.showModal(new Scene(new PatientForm()));
+        ModalsHelper.showModal(new Scene(new PatientForm()), false);
         updatePatientsList();
     }
 }

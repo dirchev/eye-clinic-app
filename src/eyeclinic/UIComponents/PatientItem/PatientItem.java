@@ -45,20 +45,6 @@ public class PatientItem extends VBox {
     }
     
     public void previewPatient () {
-        Scene modalContent = new Scene(new PatientPreview(patient));
-        
-        Stage modal = new Stage();
-        
-        // Keep a reference to currently opened modal
-        ModalsHelper.setOpenedModal(modal);
-
-        //Block events to other modals
-        modal.initModality(Modality.APPLICATION_MODAL);
-        modal.setTitle("Patient Preview");
-        modal.setMinWidth(250);
-
-        //Display modal and wait for it to be closed before returning
-        modal.setScene(modalContent);
-        modal.showAndWait();
+        ModalsHelper.showModal(new Scene(new PatientPreview(patient)), false);
     }
 }
