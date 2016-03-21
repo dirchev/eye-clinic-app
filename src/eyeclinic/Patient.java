@@ -13,7 +13,6 @@ public class Patient {
     private String phoneNumber;
     private String address;
     private String email;
-    private ArrayList<Note> notes;
 
     /**
      * Constructs a new patient.
@@ -27,7 +26,6 @@ public class Patient {
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.email = email;
-        this.notes = new ArrayList<>();
     }
 
     /**

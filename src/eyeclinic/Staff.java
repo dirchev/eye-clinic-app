@@ -1,12 +1,14 @@
 package eyeclinic;
 
+import java.io.Serializable;
+
 /**
  * Implementation of Staff interface.
  * <p>
  * Holds all fields, needed for a eye clinic's staff member.
  * @author dirchev
  */
-public class Staff {
+public class Staff implements Serializable {
     private final String username;
     private final String password;
     private final String fullName;

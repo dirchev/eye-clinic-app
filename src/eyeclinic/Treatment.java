@@ -16,7 +16,6 @@ public class Treatment {
     private String title;
     private String status;
     private final Patient patient;
-    private final ArrayList<Appointment> appointments;
 
     /**
      * Creates new treatment for a patient. The initial status is pending
@@ -24,7 +23,6 @@ public class Treatment {
      * @param patient the patient, which this treatment is created for
      */
     public Treatment(String title, Patient patient) {
-        this.appointments = new ArrayList<>();
         this.title = title;
         this.status = "pending";
         this.patient = patient;
@@ -68,14 +66,5 @@ public class Treatment {
      */
     public Patient getPatient() {
         return patient;
-    }
-
-    /**
-     * Returns all appointments, associated with this treatment
-     * @return list of the treatment appointments
-     */
-    public ArrayList<Appointment> getAppointments() {
-        return appointments;
     }    
-    
 }
