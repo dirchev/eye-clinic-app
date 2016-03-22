@@ -1,5 +1,6 @@
 package eyeclinic;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  * Holds all fields, needed for a patient in the eye clinic application.
  * @author dirchev
  */
-public class Patient {
+public class Patient implements Serializable {
     private String fullName;
     private String phoneNumber;
     private String address;

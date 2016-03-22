@@ -1,6 +1,6 @@
 package eyeclinic;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
  * Implementation of Treatment interface.
@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * 
  * @author dirchev
  */
-public class Treatment {
+public class Treatment implements Serializable {
     private String title;
     private String status;
     private final Patient patient;

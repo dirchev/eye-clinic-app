@@ -6,7 +6,15 @@
 package eyeclinic.Models;
 
 import eyeclinic.Patient;
+import eyeclinic.Staff;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * PatientsModel takes care of storing all patients during application usage
@@ -16,11 +24,7 @@ public class PatientsModel {
     private static final ArrayList<Patient> patients = new ArrayList<>();
 
     static {
-        PatientsModel.patients.add(new Patient("John Cena", "0123456789", "Galsgow", "john.cena@gmail.com"));
-        PatientsModel.patients.add(new Patient("Dr House", "0123456780", "America!", "house@gmail.com"));
-        PatientsModel.patients.add(new Patient("Dr School", "0123456780", "America!", "house@gmail.com"));
-        PatientsModel.patients.add(new Patient("Dr Room", "0123456780", "America!", "house@gmail.com"));
-        PatientsModel.patients.add(new Patient("Dr Something", "0123456780", "America!", "house@gmail.com"));
+        loadData();
     }
     
     /**
@@ -29,6 +33,36 @@ public class PatientsModel {
      */
     public static ArrayList<Patient> getPatients() {
         return patients;
+    }
+    
+    /**
+     * Saves all patients in file storage
+     */
+    public static void saveData () {
+        try (FileOutputStream fs = new FileOutputStream("patients.data")) {
+            ObjectOutputStream os = new ObjectOutputStream(fs);
+            
+            for (Patient patient: patients) {
+                os.writeObject(patient);
+            }
+            
+            os.close();
+        } catch (IOException ex) {
+            Logger.getLogger(PatientsModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private static void loadData () {
+        try(FileInputStream fi = new FileInputStream("patients.data"); ObjectInputStream os = new ObjectInputStream(fi)) { 
+            // fi.available() is not the best way to check weather there are more records in the file
+            // however, that is the fastest way to coop with this problem
+            // the better solution is here: http://stackoverflow.com/a/2626193
+            while (fi.available() > 0) {
+                patients.add((Patient)os.readObject());
+            }
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(PatientsModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

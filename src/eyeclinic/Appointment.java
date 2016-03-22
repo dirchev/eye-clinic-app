@@ -1,5 +1,6 @@
 package eyeclinic;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Date;
  * 
  * @author dirchev
  */
-public class Appointment {
+public class Appointment implements Serializable {
     private Date startDate;
     private Date endDate;
     private final Patient patient;

@@ -6,6 +6,7 @@
 package eyeclinic.Models;
 
 import eyeclinic.Staff;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -21,7 +22,7 @@ import java.util.logging.Logger;
  * @author dirchev
  */
 public class StaffModel {
-    private static final ArrayList<Staff> staff = new ArrayList<>();
+    private static ArrayList<Staff> staff = new ArrayList<>();
 
     static {
         loadData();
@@ -29,12 +30,14 @@ public class StaffModel {
     
     /**
      * Returns all staff members
-     * @return
+     * @return all staff members
      */
     public static ArrayList<Staff> getStaff() {
         return staff;
     }
-    
+    /**
+     * Saves all staff members in file storage
+     */
     public static void saveData () {
         try (FileOutputStream fs = new FileOutputStream("staff.data")) {
             ObjectOutputStream os = new ObjectOutputStream(fs);
@@ -58,6 +61,8 @@ public class StaffModel {
                 staff.add((Staff)os.readObject());
             }
         } catch (IOException | ClassNotFoundException ex) {
+            // if no data fount, add the default user
+            staff.add(new Staff("admin", "121212", "Dimitar Mirchev"));
             Logger.getLogger(StaffModel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
