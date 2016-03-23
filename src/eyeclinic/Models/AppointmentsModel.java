@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package eyeclinic.Models;
 
 import eyeclinic.Appointment;
@@ -33,10 +28,8 @@ public class AppointmentsModel {
     public static void saveData () {
         try (FileOutputStream fs = new FileOutputStream("appointments.data")) {
             ObjectOutputStream os = new ObjectOutputStream(fs);
-            
-            for (Appointment appointment: appointments) {
-                os.writeObject(appointment);
-            }
+                
+            os.writeObject(appointments);
             
             os.close();
         } catch (IOException ex) {
@@ -45,13 +38,8 @@ public class AppointmentsModel {
     }
     
     private static void loadData () {
-        try(FileInputStream fi = new FileInputStream("appointments.data"); ObjectInputStream os = new ObjectInputStream(fi)) { 
-            // fi.available() is not the best way to check weather there are more records in the file
-            // however, that is the fastest way to coop with this problem
-            // the better solution is here: http://stackoverflow.com/a/2626193
-            while (fi.available() > 0) {
-                appointments.add((Appointment)os.readObject());
-            }
+        try(FileInputStream fi = new FileInputStream("appointments.data"); ObjectInputStream os = new ObjectInputStream(fi)) {
+            appointments = (ArrayList<Appointment>)os.readObject();
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(PatientsModel.class.getName()).log(Level.SEVERE, null, ex);
         }

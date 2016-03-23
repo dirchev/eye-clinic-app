@@ -6,7 +6,6 @@
 package eyeclinic.Models;
 
 import eyeclinic.Patient;
-import eyeclinic.Staff;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -21,7 +20,7 @@ import java.util.logging.Logger;
  * @author dirchev
  */
 public class PatientsModel {
-    private static final ArrayList<Patient> patients = new ArrayList<>();
+    private static ArrayList<Patient> patients = new ArrayList<>();
 
     static {
         loadData();
@@ -42,9 +41,7 @@ public class PatientsModel {
         try (FileOutputStream fs = new FileOutputStream("patients.data")) {
             ObjectOutputStream os = new ObjectOutputStream(fs);
             
-            for (Patient patient: patients) {
-                os.writeObject(patient);
-            }
+            os.writeObject(patients);
             
             os.close();
         } catch (IOException ex) {
@@ -54,12 +51,7 @@ public class PatientsModel {
     
     private static void loadData () {
         try(FileInputStream fi = new FileInputStream("patients.data"); ObjectInputStream os = new ObjectInputStream(fi)) { 
-            // fi.available() is not the best way to check weather there are more records in the file
-            // however, that is the fastest way to coop with this problem
-            // the better solution is here: http://stackoverflow.com/a/2626193
-            while (fi.available() > 0) {
-                patients.add((Patient)os.readObject());
-            }
+            patients = (ArrayList<Patient>)os.readObject();
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(PatientsModel.class.getName()).log(Level.SEVERE, null, ex);
         }

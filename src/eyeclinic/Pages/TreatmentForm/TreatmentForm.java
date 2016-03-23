@@ -76,7 +76,7 @@ public class TreatmentForm extends BorderPane {
         } else {
             this.updateTreatment();
         }
-        ModalsHelper.showModal(new Scene(new PatientPreview(this.patient)), false);
+        ModalsHelper.showModal(new Scene(new TreatmentPreview(this.treatment)), false);
     }
     
     private void createTreatment () {

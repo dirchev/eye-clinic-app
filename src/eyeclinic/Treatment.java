@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class Treatment implements Serializable {
     private String title;
     private String status;
-    private final Patient patient;
+    private Patient patient;
 
     /**
      * Creates new treatment for a patient. The initial status is pending
@@ -66,5 +66,5 @@ public class Treatment implements Serializable {
      */
     public Patient getPatient() {
         return patient;
-    }    
+    }
 }

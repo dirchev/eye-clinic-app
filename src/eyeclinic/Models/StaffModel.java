@@ -6,14 +6,12 @@
 package eyeclinic.Models;
 
 import eyeclinic.Staff;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,11 +39,7 @@ public class StaffModel {
     public static void saveData () {
         try (FileOutputStream fs = new FileOutputStream("staff.data")) {
             ObjectOutputStream os = new ObjectOutputStream(fs);
-            
-            for (Staff member: staff) {
-                os.writeObject(member);
-            }
-            
+            os.writeObject(staff);
             os.close();
         } catch (IOException ex) {
             Logger.getLogger(StaffModel.class.getName()).log(Level.SEVERE, null, ex);
@@ -54,12 +48,7 @@ public class StaffModel {
     
     private static void loadData () {
         try(FileInputStream fi = new FileInputStream("staff.data"); ObjectInputStream os = new ObjectInputStream(fi)) { 
-            // fi.available() is not the best way to check weather there are more records in the file
-            // however, that is the fastest way to coop with this problem
-            // the better solution is here: http://stackoverflow.com/a/2626193
-            while (fi.available() > 0) {
-                staff.add((Staff)os.readObject());
-            }
+            staff = (ArrayList<Staff>)os.readObject();
         } catch (IOException | ClassNotFoundException ex) {
             // if no data fount, add the default user
             staff.add(new Staff("admin", "121212", "Dimitar Mirchev"));
