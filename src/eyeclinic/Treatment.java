@@ -1,6 +1,7 @@
 package eyeclinic;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * Implementation of Treatment interface.
@@ -13,6 +14,7 @@ import java.io.Serializable;
  * @author dirchev
  */
 public class Treatment implements Serializable {
+    private final UUID id;
     private String title;
     private String status;
     private Patient patient;
@@ -23,9 +25,18 @@ public class Treatment implements Serializable {
      * @param patient the patient, which this treatment is created for
      */
     public Treatment(String title, Patient patient) {
+        this.id = UUID.randomUUID();
         this.title = title;
         this.status = "pending";
         this.patient = patient;
+    }
+    
+    /**
+     * Get treatment id
+     * @return id
+     */
+    public UUID getId() {
+        return this.id;
     }
 
     /**

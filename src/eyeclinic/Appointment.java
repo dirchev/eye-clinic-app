@@ -2,6 +2,7 @@ package eyeclinic;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Implementation of Appointment interface.
@@ -14,6 +15,7 @@ import java.util.Date;
  * @author dirchev
  */
 public class Appointment implements Serializable {
+    private final UUID id;
     private Date startDate;
     private Date endDate;
     private final Patient patient;
@@ -27,10 +29,19 @@ public class Appointment implements Serializable {
      * @param endDate the end date and time of the appointment
      */
     public Appointment (Treatment treatment, Date startDate, Date endDate) {
+        this.id = UUID.randomUUID();
         this.patient = treatment.getPatient();
         this.treatment = treatment;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+    
+    /**
+     * Get appointment id
+     * @return id
+     */
+    public UUID getId() {
+        return this.id;
     }
 
     /**

@@ -1,6 +1,7 @@
 package eyeclinic;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * Implementation of Patient interface.
@@ -9,6 +10,7 @@ import java.io.Serializable;
  * @author dirchev
  */
 public class Patient implements Serializable {
+    private final UUID id;
     private String fullName;
     private String phoneNumber;
     private String address;
@@ -22,10 +24,19 @@ public class Patient implements Serializable {
      * @param email patient's email
      */
     public Patient(String fullName, String phoneNumber, String address, String email) {
+        this.id = UUID.randomUUID();
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.email = email;
+    }
+    
+    /**
+     * Get patient id
+     * @return id
+     */
+    public UUID getId() {
+        return this.id;
     }
 
     /**

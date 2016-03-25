@@ -1,6 +1,7 @@
 package eyeclinic;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * Implementation of Staff interface.
@@ -9,6 +10,7 @@ import java.io.Serializable;
  * @author dirchev
  */
 public class Staff implements Serializable {
+    private final UUID id;
     private final String username;
     private final String password;
     private final String fullName;
@@ -21,6 +23,7 @@ public class Staff implements Serializable {
      * @param fullName the full name of the staff member
      */
     public Staff (String username, String password, String fullName) {
+        this.id = UUID.randomUUID();
         this.username = username;
         this.password = password;
         this.fullName = fullName;
@@ -35,10 +38,19 @@ public class Staff implements Serializable {
      * @param role the staff member's role. Can be "receptionist" or "optician"
      */
     public Staff (String username, String password, String fullName, String role) {
+        this.id = UUID.randomUUID();
         this.username = username;
         this.password = password;
         this.fullName = fullName;
         this.role = role;
+    }
+    
+    /**
+     * Get staff id
+     * @return id
+     */
+    public UUID getId() {
+        return this.id;
     }
     
     /**
