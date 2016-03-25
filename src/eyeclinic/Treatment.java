@@ -1,5 +1,6 @@
 package eyeclinic;
 
+import eyeclinic.Models.PatientsModel;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -15,9 +16,9 @@ import java.util.UUID;
  */
 public class Treatment implements Serializable {
     private final UUID id;
+    private final UUID patientId;
     private String title;
     private String status;
-    private Patient patient;
 
     /**
      * Creates new treatment for a patient. The initial status is pending
@@ -28,7 +29,7 @@ public class Treatment implements Serializable {
         this.id = UUID.randomUUID();
         this.title = title;
         this.status = "pending";
-        this.patient = patient;
+        this.patientId = patient.getId();
     }
     
     /**
@@ -76,6 +77,6 @@ public class Treatment implements Serializable {
      * @return the Patient 
      */
     public Patient getPatient() {
-        return patient;
+        return PatientsModel.getById(this.patientId);
     }
 }

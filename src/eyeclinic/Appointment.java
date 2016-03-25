@@ -1,5 +1,8 @@
 package eyeclinic;
 
+import eyeclinic.Models.PatientsModel;
+import eyeclinic.Models.StaffModel;
+import eyeclinic.Models.TreatmentsModel;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
@@ -16,11 +19,11 @@ import java.util.UUID;
  */
 public class Appointment implements Serializable {
     private final UUID id;
+    private final UUID patientId;
+    private final UUID treatmentId;
+    private UUID opticianId;
     private Date startDate;
     private Date endDate;
-    private final Patient patient;
-    private final Treatment treatment;
-    private Staff optician;
     
     /**
      * Creates new appointment record.
@@ -30,8 +33,8 @@ public class Appointment implements Serializable {
      */
     public Appointment (Treatment treatment, Date startDate, Date endDate) {
         this.id = UUID.randomUUID();
-        this.patient = treatment.getPatient();
-        this.treatment = treatment;
+        this.patientId = treatment.getPatient().getId();
+        this.treatmentId = treatment.getId();
         this.startDate = startDate;
         this.endDate = endDate;
     }
@@ -81,7 +84,7 @@ public class Appointment implements Serializable {
      * @return the patients associated with the appointment
      */
     public Patient getPatient() {
-        return patient;
+        return PatientsModel.getById(this.patientId);
     }
 
     /**
@@ -89,7 +92,7 @@ public class Appointment implements Serializable {
      * @return the associated treatment
      */
     public Treatment getTreatment() {
-        return treatment;
+        return TreatmentsModel.getById(this.treatmentId);
     }
 
     /**
@@ -97,7 +100,7 @@ public class Appointment implements Serializable {
      * @return assigned optician
      */
     public Staff getOptician() {
-        return optician;
+        return StaffModel.getById(opticianId);
     }
 
     /**
@@ -105,7 +108,7 @@ public class Appointment implements Serializable {
      * @param optician optician to be assigned to the appointment
      */
     public void setOptician (Staff optician) {
-        this.optician = optician;
+        this.opticianId = optician.getId();
     }
     
 }
