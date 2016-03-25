@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -66,5 +67,19 @@ public class TreatmentsModel {
             }
         }
         return foundTreatments;
+    }
+    
+    /**
+     * Find treatment by given UUID
+     * @param id id to be used when searching for treatment
+     * @return treatment with the given id or null if no treatment is found
+     */
+    public static Treatment getById (UUID id) {
+        for (Treatment t : treatments) {
+            if (t.getId().equals(id)) {
+                return t;
+            }
+        }
+        return null;
     }
 }

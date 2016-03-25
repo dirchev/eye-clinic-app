@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -66,6 +67,20 @@ public class StaffModel {
         for (Staff member : staff) {
             if (member.checkCredentials(username, password)) {
                 return member;
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * Find staff member by given UUID
+     * @param id id to be used when searching for staff member
+     * @return staff object with the given id or null if no staff member is found
+     */
+    public static Staff getById(UUID id) {
+        for (Staff s : staff) {
+            if (s.getId().equals(id)) {
+                return s;
             }
         }
         return null;

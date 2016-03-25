@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -66,5 +67,19 @@ public class AppointmentsModel {
             }
         }
         return foundAppointments;
+    }
+    
+    /**
+     * Find appointment by given UUID
+     * @param id id to be used when searching for appointment
+     * @return appointment with the given id or null if no appointment is found
+     */
+    public static Appointment getById (UUID id) {
+        for (Appointment a : appointments) {
+            if (a.getId().equals(id)) {
+                return a;
+            }
+        }
+        return null;
     }
 }

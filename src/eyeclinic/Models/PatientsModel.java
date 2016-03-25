@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -73,5 +74,19 @@ public class PatientsModel {
             }
         }
         return foundPatients;
+    }
+    
+    /**
+     * Get patient by given UUID
+     * @param id UUID to be used in patient search
+     * @return patient with that id or null if there is no patient found
+     */
+    public static Patient getById (UUID id) {
+        for(Patient p : patients) {
+            if (p.getId().equals(id)) {
+                return p;
+            }
+        }
+        return null;
     }
 }
