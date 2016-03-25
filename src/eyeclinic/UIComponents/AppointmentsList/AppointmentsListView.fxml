@@ -8,11 +8,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root alignment="CENTER" prefHeight="271.0" prefWidth="518.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="CENTER" prefHeight="271.0" prefWidth="518.0" styleClass="card" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox>
          <children>
-            <Label text="Appointments">
+            <Label styleClass="card-title" text="Appointments">
                <font>
                   <Font size="26.0" />
                </font>
