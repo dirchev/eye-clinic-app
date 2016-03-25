@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../Styles/material-fx.css" spacing="20.0" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="465.0" prefWidth="600.0" spacing="20.0" stylesheets="@../../Styles/material-fx.css" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox spacing="5.0">
          <children>
@@ -22,47 +22,112 @@
             <Button fx:id="closeButton" mnemonicParsing="false" onAction="#close" text="Close" />
          </children>
       </HBox>
+      <VBox>
+         <children>
+            <HBox>
+               <children>
+                  <Label text="Start:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label fx:id="appointmentStartDateLabel" layoutX="10.0" layoutY="10.0" text="StartDateTime">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="End:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label fx:id="appointmentEndDateLabel" layoutX="10.0" layoutY="10.0" text="EndDateTime">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <VBox spacing="10.0" styleClass="card" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label styleClass="card-title" text="Patient">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <HBox spacing="20.0">
+                     <children>
+                        <Label fx:id="patientNameLabel" layoutX="10.0" layoutY="10.0" text="Patient Name">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#viewPatient" styleClass="card-button" text="View" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox spacing="10.0" styleClass="card" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label styleClass="card-title" text="Treatment">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="treatmentTitleLabel" text="title">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label fx:id="treatmentStatusLabel" text="status">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox spacing="20.0">
+                     <children>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#viewTreatment" text="View" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
-                  <VBox>
+                  <VBox spacing="5.0" style=": 1;" styleClass="card">
                      <children>
-                        <HBox>
-                           <children>
-                              <Label text="Start:">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Region HBox.hgrow="ALWAYS" />
-                              <Label fx:id="appointmentStartDateLabel" layoutX="10.0" layoutY="10.0" text="StartDateTime">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Label text="End:">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Region HBox.hgrow="ALWAYS" />
-                              <Label fx:id="appointmentEndDateLabel" layoutX="10.0" layoutY="10.0" text="EndDateTime">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-                  <VBox spacing="5.0" style="-fx-border-color: #000000; -fx-border-width: 1;">
-                     <children>
-                        <Label text="Assigned Optician">
+                        <Label styleClass="card-title" text="Assigned Optician">
                            <font>
                               <Font size="22.0" />
                            </font>
@@ -71,67 +136,7 @@
                         <HBox>
                            <children>
                               <Region HBox.hgrow="ALWAYS" />
-                              <Button mnemonicParsing="false" text="Update" />
-                           </children>
-                        </HBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </VBox>
-               </children>
-            </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <VBox spacing="10.0" style="-fx-border-color: #000;">
-                     <children>
-                        <Label text="Patient">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Label>
-                        <HBox spacing="20.0">
-                           <children>
-                              <Label fx:id="patientNameLabel" layoutX="10.0" layoutY="10.0" text="Patient Name">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                              <Region HBox.hgrow="ALWAYS" />
-                              <Button mnemonicParsing="false" onAction="#viewPatient" text="View" />
-                           </children>
-                        </HBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </VBox>
-                  <VBox spacing="10.0" style="-fx-border-color: #000;">
-                     <children>
-                        <Label text="Treatment">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Label>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Label fx:id="treatmentTitleLabel" text="title">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Label>
-                              <Region HBox.hgrow="ALWAYS" />
-                              <Label fx:id="treatmentStatusLabel" text="status">
-                                 <font>
-                                    <Font size="17.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox spacing="20.0">
-                           <children>
-                              <Region HBox.hgrow="ALWAYS" />
-                              <Button mnemonicParsing="false" onAction="#viewTreatment" text="View" />
+                              <Button mnemonicParsing="false" styleClass="card-button" text="Update" />
                            </children>
                         </HBox>
                      </children>

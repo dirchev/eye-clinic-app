@@ -18,7 +18,13 @@
       </Label>
       <TextField fx:id="usernameTextField" promptText="Username" />
       <PasswordField fx:id="passwordTextField" promptText="Password" />
-      <Button fx:id="loginButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#handleLoginButtonSubmit" styleClass="card-button" text="Login" textAlignment="CENTER" />
+      <HBox spacing="10.0">
+         <children>
+            <Button fx:id="signupButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#handleSugnUpButton" styleClass="card-button" text="Sign Up" textAlignment="CENTER" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="loginButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#handleLoginButtonSubmit" styleClass="card-button" text="Login" textAlignment="CENTER" />
+         </children>
+      </HBox>
    </children>
    <effect>
       <Glow />

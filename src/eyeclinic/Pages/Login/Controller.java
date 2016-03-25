@@ -7,7 +7,10 @@ package eyeclinic.Pages.Login;
 
 import eyeclinic.Staff;
 import eyeclinic.Helpers.AuthHelper;
+import eyeclinic.Helpers.ModalsHelper;
 import eyeclinic.Models.StaffModel;
+import eyeclinic.Pages.StaffForm.StaffForm;
+import javafx.scene.Scene;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,7 +24,6 @@ import javafx.scene.paint.Paint;
  * @author dirchev
  */
 public class Controller {
-
     public Button loginButton;
     public TextField usernameTextField, passwordTextField;
     public VBox layout;
@@ -38,5 +40,9 @@ public class Controller {
             errorMessageLabel.setTextFill(Paint.valueOf("#FF0000"));
             layout.getChildren().add(1, errorMessageLabel);
         }
+    }
+    
+    public void handleSugnUpButton () {
+        ModalsHelper.showModal(new Scene(new StaffForm()), true);
     }
 }
