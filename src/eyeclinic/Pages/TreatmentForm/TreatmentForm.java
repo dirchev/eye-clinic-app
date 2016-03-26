@@ -5,18 +5,18 @@
  */
 package eyeclinic.Pages.TreatmentForm;
 
-import eyeclinic.Pages.PatientPreview.PatientPreview;
 import eyeclinic.Pages.TreatmentPreview.TreatmentPreview;
 import eyeclinic.Patient;
 import eyeclinic.Helpers.ModalsHelper;
 import eyeclinic.Models.TreatmentsModel;
 import eyeclinic.Treatment;
 import java.io.IOException;
+import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 /**
  * FXML PatientForm class
@@ -25,7 +25,7 @@ import javafx.scene.layout.BorderPane;
  */
 public class TreatmentForm extends BorderPane {
 
-    public TextField titleField;
+    public ChoiceBox treatmentTitleChoiceBox;
     public Label patientNameLabel;
     public Label patientEmailLabel;
     public Button cancelButton, createButton;
@@ -45,6 +45,7 @@ public class TreatmentForm extends BorderPane {
             throw new RuntimeException(exception);
         }
         this.patient = patient;
+        setUpTitleChoiceBox();
         displayPatientInfo();
     }
     // Treatment Edit
@@ -60,8 +61,22 @@ public class TreatmentForm extends BorderPane {
         }
         this.patient = treatment.getPatient();
         this.treatment = treatment;
-        titleField.setText(treatment.getTitle());
+        setUpTitleChoiceBox();
         displayPatientInfo();
+    }
+
+    private void setUpTitleChoiceBox() {
+        ArrayList<String> treatmentTitles = new ArrayList<>();
+        treatmentTitles.add("Eye check");
+        treatmentTitles.add("New glasses");
+        treatmentTitles.add("Contct lenses");
+        treatmentTitles.add("Eye condition management");
+        
+        treatmentTitleChoiceBox.getItems().addAll(treatmentTitles);
+        
+        if (this.treatment != null) {
+            treatmentTitleChoiceBox.setValue(this.treatment.getTitle());
+        }
     }
     
     private void displayPatientInfo () {
@@ -80,13 +95,13 @@ public class TreatmentForm extends BorderPane {
     }
     
     private void createTreatment () {
-        String title = titleField.getText();
+        String title = treatmentTitleChoiceBox.getValue().toString();
         this.treatment = new Treatment(title, this.patient);
         TreatmentsModel.getTreatments().add(this.treatment);
     }
     
     private void updateTreatment () {
-        this.treatment.setTitle(titleField.getText());
+        this.treatment.setTitle(treatmentTitleChoiceBox.getValue().toString());
     }
     
     public void cancelCreation () {
