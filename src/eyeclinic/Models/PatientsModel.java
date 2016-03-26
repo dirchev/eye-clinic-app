@@ -68,9 +68,6 @@ public class PatientsModel {
         for (Patient p : patients) {
             if (p.getFullName().toLowerCase().contains(searchText.toLowerCase())) {
                 foundPatients.add(p);
-            } else {
-                System.out.println(p.getFullName().toLowerCase());
-                System.out.println(searchText);
             }
         }
         return foundPatients;
