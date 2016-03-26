@@ -70,4 +70,9 @@ public class Staff implements Serializable {
     public String getFullName() {
         return this.fullName;
     }
+    
+    @Override
+    public String toString () {
+        return this.fullName;
+    }
 }

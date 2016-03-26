@@ -1,23 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package eyeclinic.UIComponents.AppointmentItem;
 
 import eyeclinic.Appointment;
-import eyeclinic.Pages.PatientPreview.PatientPreview;
 import eyeclinic.Helpers.ModalsHelper;
 import eyeclinic.Pages.AppointmentPreview.AppointmentPreview;
-import eyeclinic.Pages.TreatmentPreview.TreatmentPreview;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-
 /**
  * FXML Controller class
  *
@@ -28,6 +18,7 @@ public class AppointmentItem extends VBox {
     private final Appointment appointment;
     public Label appointmentLabel;
     public Label timeLabel;
+    public Label opticianNameLabel;
     
     
     public AppointmentItem (Appointment appointment) {
@@ -43,6 +34,9 @@ public class AppointmentItem extends VBox {
         this.appointment = appointment;
         appointmentLabel.setText("Appointment on " + appointment.getStartDate().getDate() + " / " + appointment.getStartDate().getMonth());
         timeLabel.setText(appointment.getStartDate().getHours()+ ":" + appointment.getStartDate().getMinutes() + " - " + appointment.getEndDate().getHours()+ ":" + appointment.getEndDate().getMinutes());
+        if (this.appointment.getOptician() != null) {
+            opticianNameLabel.setText(this.appointment.getOptician().getFullName());
+        }
     }
     
     public void previewAppointment () {

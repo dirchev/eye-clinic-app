@@ -31,7 +31,7 @@
       </VBox>
    </top>
    <center>
-      <VBox fx:id="contentWrapper" prefHeight="355.0" prefWidth="600.0" BorderPane.alignment="TOP_CENTER">
+      <VBox fx:id="contentWrapper" alignment="CENTER" BorderPane.alignment="TOP_CENTER">
          <children>
          </children>
          <padding>

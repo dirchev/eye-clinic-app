@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root alignment="CENTER" prefHeight="271.0" prefWidth="518.0" styleClass="card" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="TOP_CENTER" styleClass="card" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox>
          <children>
@@ -30,9 +30,13 @@
                   <Insets bottom="5.0" top="5.0" />
                </padding>
             </HBox>
-            <ScrollPane prefHeight="200.0" prefWidth="200.0">
+            <ScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
                <content>
-                  <VBox fx:id="appointmentsContainer" />
+                  <VBox fx:id="appointmentsContainer" alignment="CENTER" spacing="3.0">
+                     <padding>
+                        <Insets left="5.0" right="5.0" />
+                     </padding>
+                  </VBox>
                </content>
             </ScrollPane>
          </children>

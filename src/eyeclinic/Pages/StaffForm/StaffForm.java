@@ -5,15 +5,11 @@
  */
 package eyeclinic.Pages.StaffForm;
 
-import eyeclinic.Pages.PatientPreview.PatientPreview;
-import eyeclinic.Patient;
 import eyeclinic.Helpers.ModalsHelper;
-import eyeclinic.Models.PatientsModel;
 import eyeclinic.Models.StaffModel;
 import eyeclinic.Staff;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -56,7 +52,7 @@ public class StaffForm extends BorderPane {
         String username = usernameField.getText();
         String password = passwordField.getText();
         String role = roleField.getText();
-        this.staff = new Staff(username, password, username, role);
+        this.staff = new Staff(username, password, name, role);
         StaffModel.getStaff().add(this.staff);
     }
 

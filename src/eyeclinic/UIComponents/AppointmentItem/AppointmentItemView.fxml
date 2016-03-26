@@ -8,23 +8,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root style="-fx-border-width: 1px;" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root styleClass="card" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-         <HBox>
+         <HBox VBox.vgrow="ALWAYS">
           <children>
-             <Label fx:id="appointmentLabel" text="Appointment Label">
+             <Label fx:id="appointmentLabel" styleClass="card-title" text="Appointment Label">
                 <font>
                    <Font size="19.0" />
                 </font>
              </Label>
           </children>
        </HBox>
-      <HBox layoutX="10.0" layoutY="10.0">
+      <HBox layoutX="10.0" layoutY="10.0" VBox.vgrow="ALWAYS">
          <children>
             <Label fx:id="timeLabel" text="15:00 - 15:30">
                <font>
                   <Font size="11.0" />
                </font></Label>
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <Label fx:id="opticianNameLabel" text="No optician assigned" />
+         </children>
+      </HBox>
+      <HBox>
+         <children>
             <Region HBox.hgrow="ALWAYS" />
             <Button mnemonicParsing="false" onAction="#previewAppointment" text="View" />
          </children>

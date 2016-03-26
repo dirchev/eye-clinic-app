@@ -42,11 +42,12 @@ public class AppointmentsList extends VBox{
     }
     
     private final void updateAppointmentsListContents (ArrayList<Appointment> appointments) {
+        appointmentsContainer.getChildren().clear();
+        
         // Sort appointments by start date
         ArrayList<Appointment> sortedAppointments = new ArrayList<>(appointments);
         Collections.sort(sortedAppointments, (Appointment a1, Appointment a2) -> a1.getStartDate().compareTo(a2.getStartDate()));
         
-        appointmentsContainer.getChildren().clear();
         if (appointments.isEmpty()) {
             Label message = new Label("No appointments found...");
             appointmentsContainer.getChildren().add(message);

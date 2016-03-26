@@ -9,11 +9,15 @@ import eyeclinic.Appointment;
 import eyeclinic.Pages.AppointmentForm.AppointmentForm;
 import eyeclinic.Pages.PatientPreview.PatientPreview;
 import eyeclinic.Helpers.ModalsHelper;
+import eyeclinic.Models.StaffModel;
 import eyeclinic.Pages.TreatmentPreview.TreatmentPreview;
+import eyeclinic.Staff;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
@@ -29,6 +33,8 @@ public class AppointmentPreview extends VBox {
     public Label patientNameLabel;
     public Label treatmentTitleLabel;
     public Label treatmentStatusLabel;
+    public ChoiceBox<Staff> opticianChoiceBox;
+    private ArrayList<Staff> freeOpticians;
     
     private Appointment appointment;
     
@@ -42,6 +48,7 @@ public class AppointmentPreview extends VBox {
             throw new RuntimeException(exception);
         }
         this.appointment = appointment;
+        freeOpticians = StaffModel.getStaff();
         initializeLayout();
     }
     
@@ -57,6 +64,17 @@ public class AppointmentPreview extends VBox {
         // treatment
         treatmentTitleLabel.setText(appointment.getTreatment().getTitle());
         treatmentStatusLabel.setText(appointment.getTreatment().getStatus());
+        
+        // optician choice box
+        opticianChoiceBox.setAccessibleText("Choose optician");
+        opticianChoiceBox.getItems().addAll(freeOpticians);
+        if (this.appointment.getOptician() != null) {
+            opticianChoiceBox.setValue(this.appointment.getOptician());
+        }
+    }
+    
+    public void updateOptician () {
+        this.appointment.setOptician(opticianChoiceBox.getValue());
     }
     
     public void editAppointment () {

@@ -38,10 +38,8 @@ public class StaffModel {
      * Saves all staff members in file storage
      */
     public static void saveData () {
-        try (FileOutputStream fs = new FileOutputStream("staff.data")) {
-            ObjectOutputStream os = new ObjectOutputStream(fs);
+        try (FileOutputStream fs = new FileOutputStream("staff.data"); ObjectOutputStream os = new ObjectOutputStream(fs)) {
             os.writeObject(staff);
-            os.close();
         } catch (IOException ex) {
             Logger.getLogger(StaffModel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -51,7 +49,7 @@ public class StaffModel {
         try(FileInputStream fi = new FileInputStream("staff.data"); ObjectInputStream os = new ObjectInputStream(fi)) { 
             staff = (ArrayList<Staff>)os.readObject();
         } catch (IOException | ClassNotFoundException ex) {
-            // if no data fount, add the default user
+            // if no data found, add the default user
             staff.add(new Staff("admin", "121212", "Dimitar Mirchev"));
             Logger.getLogger(StaffModel.class.getName()).log(Level.SEVERE, null, ex);
         }

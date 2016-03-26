@@ -132,11 +132,11 @@
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <ChoiceBox fx:id="opticianChoiceBox" VBox.vgrow="ALWAYS" />
+                        <ChoiceBox fx:id="opticianChoiceBox" prefHeight="37.0" prefWidth="534.0" VBox.vgrow="ALWAYS" />
                         <HBox>
                            <children>
                               <Region HBox.hgrow="ALWAYS" />
-                              <Button mnemonicParsing="false" styleClass="card-button" text="Update" />
+                              <Button mnemonicParsing="false" onAction="#updateOptician" styleClass="card-button" text="Update" />
                            </children>
                         </HBox>
                      </children>
