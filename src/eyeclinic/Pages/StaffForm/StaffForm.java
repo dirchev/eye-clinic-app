@@ -9,8 +9,10 @@ import eyeclinic.Helpers.ModalsHelper;
 import eyeclinic.Models.StaffModel;
 import eyeclinic.Staff;
 import java.io.IOException;
+import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
@@ -24,7 +26,7 @@ public class StaffForm extends BorderPane {
     public TextField usernameField;
     public TextField passwordField;
     public TextField nameField;
-    public TextField roleField;
+    public ChoiceBox<String> roleChoiceBox;
     public Button cancelButton, createButton;
     
     private Staff staff = null;
@@ -40,6 +42,12 @@ public class StaffForm extends BorderPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        
+        ArrayList<String> staffRoles = new ArrayList<>();
+        staffRoles.add("optician");
+        staffRoles.add("receptionist");
+        roleChoiceBox.getItems().addAll(staffRoles);
+        roleChoiceBox.setValue("optician");
     }
     
     public void handleSubmit () {
@@ -51,7 +59,7 @@ public class StaffForm extends BorderPane {
         String name = nameField.getText();
         String username = usernameField.getText();
         String password = passwordField.getText();
-        String role = roleField.getText();
+        String role = roleChoiceBox.getValue();
         this.staff = new Staff(username, password, name, role);
         StaffModel.getStaff().add(this.staff);
     }

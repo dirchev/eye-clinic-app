@@ -25,7 +25,7 @@
             <TextField fx:id="nameField" promptText="Name" />
             <TextField fx:id="usernameField" promptText="Username" />
             <PasswordField fx:id="passwordField" promptText="Password" />
-            <TextField fx:id="roleField" promptText="Role" />
+            <ChoiceBox fx:id="roleChoiceBox" prefHeight="37.0" prefWidth="383.0" />
          </children>
          <padding>
             <Insets left="100.0" right="100.0" />
