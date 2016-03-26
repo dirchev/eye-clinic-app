@@ -8,13 +8,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root alignment="TOP_CENTER" spacing="5.0" styleClass="card" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root alignment="TOP_CENTER" styleClass="card" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox spacing="5.0">
          <children>
             <Label styleClass="card-title" text="Patients">
                <font>
-                  <Font size="28.0" />
+                  <Font size="26.0" />
                </font>
             </Label>
             <Region HBox.hgrow="ALWAYS" />
@@ -23,16 +23,17 @@
          </children>
       </HBox>
       <TextField fx:id="patientSearchField" onKeyReleased="#onSearchFieldUpdate" promptText="Search by name" />
-      <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+      <ScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
          <content>
             <VBox fx:id="container" alignment="CENTER" spacing="5.0">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding></VBox>
+               </padding>
+            </VBox>
          </content>
       </ScrollPane>
    </children>
    <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+      <Insets top="10.0" />
    </padding>
 </fx:root>
