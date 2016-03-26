@@ -24,7 +24,7 @@
          <children>
             <HBox spacing="5.0">
                <children>
-                  <CheckBox fx:id="showNotAssignedOnlyCheckbox" mnemonicParsing="false" text="Show Not Assigned Only" />
+                  <CheckBox fx:id="showNotAssignedOnlyCheckbox" mnemonicParsing="false" onAction="#notAssignedCheckboxHandler" text="Show Not Assigned Only" />
                </children>
                <padding>
                   <Insets bottom="5.0" top="5.0" />

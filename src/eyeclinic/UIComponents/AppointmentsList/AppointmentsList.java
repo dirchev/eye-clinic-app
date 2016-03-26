@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package eyeclinic.UIComponents.AppointmentsList;
 
 import eyeclinic.Appointment;
@@ -12,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
@@ -23,6 +19,7 @@ import javafx.scene.layout.VBox;
 public class AppointmentsList extends VBox{
     
     public VBox appointmentsContainer;
+    public CheckBox showNotAssignedOnlyCheckbox;
 
     public AppointmentsList() {
         super();
@@ -55,6 +52,14 @@ public class AppointmentsList extends VBox{
             for (Appointment appointment : sortedAppointments) {
                 appointmentsContainer.getChildren().add(new AppointmentItem(appointment));
             }
+        }
+    }
+    
+    public void notAssignedCheckboxHandler () {
+        if (showNotAssignedOnlyCheckbox.isSelected()) {
+            updateAppointmentsListContents(AppointmentsModel.getNotAssignedAppointments());
+        } else {
+            updateAppointmentsListContents(AppointmentsModel.getAppointments());
         }
     }
 }

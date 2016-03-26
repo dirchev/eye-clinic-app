@@ -82,4 +82,18 @@ public class AppointmentsModel {
         }
         return null;
     }
+    
+    /**
+     * Get all appointments that do not have assigned optician
+     * @return all appointments without optician
+     */
+    public static ArrayList<Appointment> getNotAssignedAppointments () {
+        ArrayList<Appointment> filteredAppointments = new ArrayList<>();
+        for (Appointment a : appointments) {
+            if (a.getOptician() == null) {
+                filteredAppointments.add(a);
+            }
+        }
+        return filteredAppointments;
+    }
 }
