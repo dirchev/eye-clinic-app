@@ -71,6 +71,14 @@ public class Staff implements Serializable {
         return this.fullName;
     }
     
+    /**
+     * Returns staff member's role
+     * @return staff member's role
+     */
+    public String getRole() {
+        return this.role;
+    }
+    
     @Override
     public String toString () {
         return this.fullName;
