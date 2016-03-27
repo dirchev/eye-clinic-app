@@ -23,7 +23,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Main.window = stage;
-        window.setScene(this.getScene("login"));
+        window.setScene(Main.getScene("login"));
         window.show();
     }
 
@@ -40,7 +40,7 @@ public class Main extends Application {
      * @param page name of the page (currently "login" or "app")
      * @return scene instance
      */
-    public static Scene getScene (String page){
+    public static Scene getScene (String page) {
         Scene scene = null;
         if(page.equals("login")) {
             try {
