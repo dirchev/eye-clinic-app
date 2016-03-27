@@ -5,6 +5,7 @@
  */
 package eyeclinic.Models;
 
+import eyeclinic.Appointment;
 import eyeclinic.Staff;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -82,6 +84,52 @@ public class StaffModel {
             }
         }
         return null;
+    }
+    
+    /**
+     * Gets all registered opticians
+     * @return array list of opticians
+     */
+    public static ArrayList<Staff> getOpticians () {
+        ArrayList<Staff> opticians = new ArrayList<>();
+        for (Staff s : staff) {
+            if (s.getRole().equals("optician")) {
+                opticians.add(s);
+            }
+        }
+        return opticians;
+    }
+    
+    /**
+     * Gets all free opticians (opticians without appointment) during a period
+     * @param from start of the period
+     * @param to end of the period
+     * @return list of free opticians during that period
+     */
+    public static ArrayList<Staff> getFreeOpticiansForPeriod (Date from, Date to) {
+        ArrayList<Staff> filteredOpticians = new ArrayList<>();
+        for (Staff o : StaffModel.getOpticians()) {
+            ArrayList<Appointment> appointments = AppointmentsModel.getAppointmentsForOptician(o);
+            Boolean isFree = true;
+            for (Appointment a : appointments) {
+                // check if start date is in the period
+                Boolean datesIntercept = a.getStartDate().before(from) || a.getStartDate().after(from);
+                // check if end date is in the period
+                datesIntercept = datesIntercept || (a.getEndDate().before(from) && a.getEndDate().after(to));
+                // check if start date equals the start of the period
+                datesIntercept = datesIntercept || a.getStartDate().equals(from);
+                // check if end date equals the end of the period
+                datesIntercept = datesIntercept || a.getEndDate().equals(to);
+                if (datesIntercept) {
+                    isFree = false;
+                    break;
+                }
+            }
+            if (isFree) {
+                filteredOpticians.add(o);
+            }
+        }
+        return filteredOpticians;
     }
     
 }
