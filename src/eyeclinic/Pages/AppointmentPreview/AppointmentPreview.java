@@ -48,7 +48,6 @@ public class AppointmentPreview extends VBox {
             throw new RuntimeException(exception);
         }
         this.appointment = appointment;
-        freeOpticians = StaffModel.getStaff();
         initializeLayout();
     }
     
@@ -64,6 +63,12 @@ public class AppointmentPreview extends VBox {
         // treatment
         treatmentTitleLabel.setText(appointment.getTreatment().getTitle());
         treatmentStatusLabel.setText(appointment.getTreatment().getStatus());
+        
+        // set free opticians
+        freeOpticians = StaffModel.getFreeOpticiansForPeriod(this.appointment.getStartDate(), this.appointment.getEndDate());
+        if (this.appointment.getOptician() != null) {
+            freeOpticians.add(this.appointment.getOptician());
+        }
         
         // optician choice box
         opticianChoiceBox.setAccessibleText("Choose optician");
