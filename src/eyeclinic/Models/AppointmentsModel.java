@@ -1,6 +1,7 @@
 package eyeclinic.Models;
 
 import eyeclinic.Appointment;
+import eyeclinic.Staff;
 import eyeclinic.Treatment;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -91,6 +92,21 @@ public class AppointmentsModel {
         ArrayList<Appointment> filteredAppointments = new ArrayList<>();
         for (Appointment a : appointments) {
             if (a.getOptician() == null) {
+                filteredAppointments.add(a);
+            }
+        }
+        return filteredAppointments;
+    }
+    
+    /**
+     * Returns all appointments, which have the given optician assigned
+     * @param optician optician to be searched with
+     * @return array list of appointments with the given optician
+     */
+    public static ArrayList<Appointment> getAppointmentsForOptician (Staff optician) {
+        ArrayList<Appointment> filteredAppointments = new ArrayList<>();
+        for ( Appointment a : appointments ) {
+            if (a.getOptician() != null && a.getOptician().getId().equals(optician.getId())) {
                 filteredAppointments.add(a);
             }
         }
