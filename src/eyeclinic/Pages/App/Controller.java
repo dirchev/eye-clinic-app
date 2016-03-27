@@ -9,10 +9,12 @@ import eyeclinic.UIComponents.AppointmentsList.AppointmentsList;
 import eyeclinic.UIComponents.PatientsList.PatientsList;
 import eyeclinic.Helpers.AuthHelper;
 import eyeclinic.Helpers.SaveDataHelper;
+import eyeclinic.UIComponents.MyAppointmentsList.MyAppointmentsList;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
@@ -25,10 +27,18 @@ public class Controller implements Initializable {
     public Button logOutButton;
     public Button appointmentsListButton, patientsListButton;
     public VBox contentWrapper;
+    public HBox navigationContainer;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.openAppointmentsList();
+        String role = AuthHelper.getLoggedInUser().getRole();
+        if (role.equals("optician")) {
+            navigationContainer.getChildren().remove(0);
+            this.openMyAppointmentsList();
+        } else if (role.equals("receptionist")) {
+            navigationContainer.getChildren().remove(1);
+            this.openAppointmentsList();
+        }
     }
     
     public void logOut () {
@@ -41,6 +51,9 @@ public class Controller implements Initializable {
     
     public void openAppointmentsList () {
         contentWrapper.getChildren().setAll(new AppointmentsList());
+    }
+    public void openMyAppointmentsList () {
+        contentWrapper.getChildren().setAll(new MyAppointmentsList());
     }
     public void openPatientsList () {
         contentWrapper.getChildren().setAll(new PatientsList());
