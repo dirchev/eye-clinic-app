@@ -27,6 +27,7 @@ public class Controller {
     public Button loginButton;
     public TextField usernameTextField, passwordTextField;
     public VBox layout;
+    public VBox errorMessageContainer;
     
     public void handleLoginButtonSubmit () throws Exception {
         String username = usernameTextField.getText();
@@ -38,7 +39,8 @@ public class Controller {
         } else {
             Label errorMessageLabel = new Label("Wrong username or password");
             errorMessageLabel.setTextFill(Paint.valueOf("#FF0000"));
-            layout.getChildren().add(1, errorMessageLabel);
+            errorMessageContainer.getChildren().clear();
+            errorMessageContainer.getChildren().add(errorMessageLabel);
         }
     }
     

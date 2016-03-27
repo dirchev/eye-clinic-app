@@ -16,6 +16,7 @@
             <Font size="31.0" />
          </font>
       </Label>
+      <VBox fx:id="errorMessageContainer" alignment="TOP_CENTER" />
       <TextField fx:id="usernameTextField" promptText="Username" />
       <PasswordField fx:id="passwordTextField" promptText="Password" />
       <HBox spacing="10.0">
