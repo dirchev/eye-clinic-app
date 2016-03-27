@@ -30,7 +30,7 @@ public class AuthHelper {
      */
     public static void setLoggedInUser(Staff loggedInUser) throws Exception {
         AuthHelper.loggedInUser = loggedInUser;
-        Main.window.setScene(Main.scenes.get("app"));
+        Main.window.setScene(Main.getScene("app"));
     }
     
     /**
@@ -38,6 +38,6 @@ public class AuthHelper {
      */
     public static void logOut() {
         AuthHelper.loggedInUser = null;
-        Main.window.setScene(Main.scenes.get("login"));
+        Main.window.setScene(Main.getScene("login"));
     }
 }

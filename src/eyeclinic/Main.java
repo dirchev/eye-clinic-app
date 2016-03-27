@@ -1,6 +1,9 @@
 package eyeclinic;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,17 +19,11 @@ public class Main extends Application {
      * The base Stage of the application
      */
     public static Stage window;
-
-    /**
-     * The scenes, that are available in the application's GUI. (will be deprecated in future version)
-     */
-    public static HashMap<String, Scene> scenes = new HashMap<>();
     
     @Override
     public void start(Stage stage) throws Exception {
         Main.window = stage;
-        initScenes();
-        window.setScene(scenes.get("login"));
+        window.setScene(this.getScene("login"));
         window.show();
     }
 
@@ -38,8 +35,21 @@ public class Main extends Application {
         launch(args);
     }
     
-    private void initScenes() throws Exception {
-        scenes.put("login", new Scene(FXMLLoader.load(getClass().getResource("Pages/Login/View.fxml"))));
-        scenes.put("app", new Scene(FXMLLoader.load(getClass().getResource("Pages/App/View.fxml"))));
+    public static Scene getScene (String page){
+        Scene scene = null;
+        if(page.equals("login")) {
+            try {
+                scene = new Scene(FXMLLoader.load(Main.class.getResource("Pages/Login/View.fxml")));
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            try {
+                scene = new Scene(FXMLLoader.load(Main.class.getResource("Pages/App/View.fxml")));
+            } catch (IOException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return scene;
     }
 }
