@@ -34,7 +34,7 @@ public class AuthHelper {
     }
     
     /**
-     *
+     * Logs out the current user and redirects to login page
      */
     public static void logOut() {
         AuthHelper.loggedInUser = null;

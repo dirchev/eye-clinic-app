@@ -35,6 +35,11 @@ public class Main extends Application {
         launch(args);
     }
     
+    /**
+     * Returns a scene instance based on page name
+     * @param page name of the page (currently "login" or "app")
+     * @return scene instance
+     */
     public static Scene getScene (String page){
         Scene scene = null;
         if(page.equals("login")) {
