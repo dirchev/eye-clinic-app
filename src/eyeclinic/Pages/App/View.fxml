@@ -14,7 +14,7 @@
             <HBox fx:id="navigationContainer" spacing="5.0">
                <children>
                   <Button fx:id="appointmentsListButton" onAction="#openAppointmentsList" text="Appointments" />
-                  <Button fx:id="appointmentsListButton1" layoutX="20.0" layoutY="20.0" onAction="#openMyAppointmentsList" text="My Appointments" />
+                  <Button fx:id="myAppointmentsListButton" layoutX="20.0" layoutY="20.0" onAction="#openMyAppointmentsList" text="My Appointments" />
                   <Button fx:id="patientsListButton" onAction="#openPatientsList" text="Patients" />
                   <Region HBox.hgrow="ALWAYS" />
                   <MenuButton mnemonicParsing="false" text="Menu">
