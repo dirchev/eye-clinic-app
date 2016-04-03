@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
  *
  * @author dirchev
  */
-public class AppointmentsList extends VBox{
+public class AppointmentsList extends VBox {
     
     public VBox appointmentsContainer;
     public CheckBox showNotAssignedOnlyCheckbox;
