@@ -9,11 +9,15 @@ import eyeclinic.Appointment;
 import eyeclinic.Patient;
 import eyeclinic.Models.AppointmentsModel;
 import eyeclinic.Helpers.ModalsHelper;
+import eyeclinic.Helpers.ValidatedInput;
 import eyeclinic.Pages.AppointmentPreview.AppointmentPreview;
 import eyeclinic.Treatment;
+import eyeclinic.UIComponents.ErrorPopOver.ErrorPopOver;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import javafx.fxml.FXMLLoader;
@@ -107,15 +111,61 @@ public class AppointmentForm extends BorderPane {
     }
     
     public void handleSubmit () {
-        // TODO validate the data
-
-        if (this.appointment == null) {
-            // patient was not imported, create a new one
-            this.createAppointment();
-        } else {
-            this.updateAppointment();
+        Boolean hasError = false;
+        
+        // validate
+        LocalDate date = dateField.getValue();
+        if (date == null) {
+            ErrorPopOver.show("Date is required", dateField);
         }
-        ModalsHelper.showModal(new Scene(new AppointmentPreview(this.appointment)), false);
+        
+        ArrayList<String> startTimeErrorMessages = new ArrayList<>();
+        ArrayList<String> endTimeErrorMessages = new ArrayList<>();
+        
+        String startTimeHour = startTimeHourField.getText();
+        ValidatedInput validatedStartTimeHour = new ValidatedInput(startTimeHour, "Hour").hour();
+        if (!validatedStartTimeHour.isValid()) {
+            startTimeErrorMessages.addAll(validatedStartTimeHour.getValidationMessages());
+            hasError = true;
+        }
+        
+        String endTimeHour = endTimeHourField.getText();
+        ValidatedInput validatedEndTimeHour = new ValidatedInput(endTimeHour, "Hour").hour();
+        if (!validatedEndTimeHour.isValid()) {
+            endTimeErrorMessages.addAll(validatedEndTimeHour.getValidationMessages());
+            hasError = true;
+        }
+        
+        String startTimeMinute = startTimeMinuteField.getText();
+        ValidatedInput validatedStartTimeMinute = new ValidatedInput(startTimeMinute, "Minutes").minutes();
+        if (!validatedStartTimeMinute.isValid()) {
+            startTimeErrorMessages.addAll(validatedStartTimeMinute.getValidationMessages());
+            hasError = true;
+        }
+       
+        String endTimeMinute = endTimeMinuteField.getText();
+        ValidatedInput validatedEndTimeMinute = new ValidatedInput(endTimeMinute, "Minutes").minutes();
+        if (!validatedEndTimeMinute.isValid()) {
+            endTimeErrorMessages.addAll(validatedEndTimeMinute.getValidationMessages());
+            hasError = true;
+        }
+        
+        if (hasError) {
+            if (startTimeErrorMessages.size() > 0) {
+                ErrorPopOver.show(startTimeErrorMessages, startTimeMinuteField);
+            }
+            if (endTimeErrorMessages.size() > 0) {
+                ErrorPopOver.show(endTimeErrorMessages, endTimeMinuteField);
+            }
+        } else {
+            if (this.appointment == null) {
+                // patient was not imported, create a new one
+                this.createAppointment();
+            } else {
+                this.updateAppointment();
+            }
+            ModalsHelper.showModal(new Scene(new AppointmentPreview(this.appointment)), false);
+        }
     }
     
     private void createAppointment () {
@@ -128,6 +178,7 @@ public class AppointmentForm extends BorderPane {
         HashMap<String, Date> dates = this.getDates();
         this.appointment.setStartDate(dates.get("startDate"));
         this.appointment.setEndDate(dates.get("endDate"));
+        this.appointment.setOptician(null);
     }
     
     public void cancelCreation () {
