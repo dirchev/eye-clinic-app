@@ -8,8 +8,10 @@ package eyeclinic.Pages.Login;
 import eyeclinic.Staff;
 import eyeclinic.Helpers.AuthHelper;
 import eyeclinic.Helpers.ModalsHelper;
+import eyeclinic.Helpers.ValidatedInput;
 import eyeclinic.Models.StaffModel;
 import eyeclinic.Pages.StaffForm.StaffForm;
+import eyeclinic.UIComponents.ErrorPopOver.ErrorPopOver;
 import javafx.scene.Scene;
 
 import javafx.scene.control.Button;
@@ -17,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+import org.controlsfx.control.PopOver;
 
 /**
  * FXML Controller class
@@ -37,10 +40,7 @@ public class Controller {
         if (user != null) {
             AuthHelper.setLoggedInUser(user);
         } else {
-            Label errorMessageLabel = new Label("Wrong username or password");
-            errorMessageLabel.setTextFill(Paint.valueOf("#FF0000"));
-            errorMessageContainer.getChildren().clear();
-            errorMessageContainer.getChildren().add(errorMessageLabel);
+            ErrorPopOver.show("Wrong username or password", usernameTextField);
         }
     }
     
