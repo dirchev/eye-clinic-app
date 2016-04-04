@@ -25,6 +25,7 @@ import javafx.scene.layout.BorderPane;
  */
 public class TreatmentForm extends BorderPane {
 
+    public Label formTitle;
     public ChoiceBox treatmentTitleChoiceBox;
     public Label patientNameLabel;
     public Label patientEmailLabel;
@@ -63,6 +64,7 @@ public class TreatmentForm extends BorderPane {
         this.treatment = treatment;
         setUpTitleChoiceBox();
         displayPatientInfo();
+        formTitle.setText("Edit Treatment");
     }
 
     private void setUpTitleChoiceBox() {
