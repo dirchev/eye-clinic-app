@@ -6,8 +6,10 @@
 package eyeclinic.Pages.StaffForm;
 
 import eyeclinic.Helpers.ModalsHelper;
+import eyeclinic.Helpers.ValidatedInput;
 import eyeclinic.Models.StaffModel;
 import eyeclinic.Staff;
+import eyeclinic.UIComponents.ErrorPopOver.ErrorPopOver;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
@@ -51,8 +53,35 @@ public class StaffForm extends BorderPane {
     }
     
     public void handleSubmit () {
-        this.createStaff();
-        ModalsHelper.closeModal();
+        Boolean hasError = false;
+        
+        String name = nameField.getText();
+        ValidatedInput validatedName = new ValidatedInput(name, "Name").min_length(3).max_length(40).alphaSpace();
+        if (!validatedName.isValid()) {
+            ErrorPopOver.show(validatedName.getValidationMessages(), nameField);
+            hasError = true;
+        }
+        
+        String username = usernameField.getText();
+        ValidatedInput validatedUsername = new ValidatedInput(username, "Username").min_length(3).max_length(40).alphanum();
+        if (!validatedUsername.isValid()) {
+            ErrorPopOver.show(validatedUsername.getValidationMessages(), usernameField);
+            hasError = true;
+        }
+        
+        String password = passwordField.getText();
+        ValidatedInput validatedPassword = new ValidatedInput(password, "Password").min_length(3).max_length(40).alphanum();
+        if (!validatedPassword.isValid()) {
+            ErrorPopOver.show(validatedPassword.getValidationMessages(), passwordField);
+            hasError = true;
+        }
+        
+        String role = roleChoiceBox.getValue();
+        
+        if (!hasError) {
+            this.createStaff();
+            ModalsHelper.closeModal();
+        }
     }
     
     private void createStaff () {
