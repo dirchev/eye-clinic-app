@@ -31,6 +31,7 @@ import javafx.scene.layout.BorderPane;
  */
 public class AppointmentForm extends BorderPane {
 
+    public Label formTitle;
     public Label patientNameLabel, patientEmailLabel, treatmentTitleLabel, treatmentStatusLabel;
     
     public DatePicker dateField;
@@ -78,6 +79,8 @@ public class AppointmentForm extends BorderPane {
         startTimeMinuteField.setText(String.valueOf(this.appointment.getStartDate().getMinutes()));
         endTimeHourField.setText(String.valueOf(this.appointment.getEndDate().getHours()));
         endTimeMinuteField.setText(String.valueOf(this.appointment.getEndDate().getMinutes()));
+
+        formTitle.setText("Edit Appointment");
         
         this.setLabels();
     }
