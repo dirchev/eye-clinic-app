@@ -108,7 +108,12 @@ public class Appointment implements Serializable {
      * @param optician optician to be assigned to the appointment
      */
     public void setOptician (Staff optician) {
-        this.opticianId = optician.getId();
+        if (optician == null) {
+            this.opticianId = null;
+        } else {
+            this.opticianId = optician.getId();
+        
+        }
     }
     
 }
