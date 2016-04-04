@@ -8,7 +8,9 @@ package eyeclinic.Pages.PatientForm;
 import eyeclinic.Pages.PatientPreview.PatientPreview;
 import eyeclinic.Patient;
 import eyeclinic.Helpers.ModalsHelper;
+import eyeclinic.Helpers.ValidatedInput;
 import eyeclinic.Models.PatientsModel;
+import eyeclinic.UIComponents.ErrorPopOver.ErrorPopOver;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -66,13 +68,46 @@ public class PatientForm extends BorderPane {
     }
     
     public void handleSubmit () {
-        if (this.patient == null) {
-            // patient was not imported, create a new one
-            this.createPatient();
-        } else {
-            this.updatePatient();
+        Boolean hasError = false;
+        
+        String name = nameField.getText();
+        ValidatedInput validatedName = new ValidatedInput(name, "Name").min_length(3).max_length(40).alphaSpace();
+        if (!validatedName.isValid()) {
+            ErrorPopOver.show(validatedName.getValidationMessages(), nameField);
+            hasError = true;
         }
-        ModalsHelper.showModal(new Scene(new PatientPreview(this.patient)), false);
+        
+        String email = emailField.getText();
+        ValidatedInput validatedEmail = new ValidatedInput(email, "Email").email();
+        if (!validatedEmail.isValid()) {
+            ErrorPopOver.show(validatedEmail.getValidationMessages(), emailField);
+            hasError = true;
+        }
+        
+        String phone = phoneField.getText();
+        ValidatedInput validatedPhone = new ValidatedInput(phone, "Phone").phone();
+        if (!validatedPhone.isValid()) {
+            ErrorPopOver.show(validatedPhone.getValidationMessages(), phoneField);
+            hasError = true;
+        }
+        
+        String address = addressField.getText();
+        ValidatedInput validatedAddress = new ValidatedInput(address, "Address").min_length(3);
+        if (!validatedAddress.isValid()) {
+            ErrorPopOver.show(validatedAddress.getValidationMessages(), addressField);
+            hasError = true;
+        }
+        
+        if (!hasError) {
+            if (this.patient == null) {
+                // patient was not imported, create a new one
+                this.createPatient();
+            } else {
+                this.updatePatient();
+            }
+            ModalsHelper.showModal(new Scene(new PatientPreview(this.patient)), false);
+        }
+        
     }
     
     private void createPatient () {

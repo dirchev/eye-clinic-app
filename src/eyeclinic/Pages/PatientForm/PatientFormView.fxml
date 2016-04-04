@@ -20,7 +20,7 @@
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <center>
-      <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" spacing="25.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="nameField" promptText="Name" />
             <TextField fx:id="emailField" promptText="Email" />
