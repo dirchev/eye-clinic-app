@@ -135,7 +135,7 @@ public class ValidatedInput {
      * @return ValidatedInput instance with updated properties
      */
     public ValidatedInput email () {
-        String emailRegex = "^[A-Z0-9._%+-]++@[A-Z0-9.-]++\\.[A-Z]{2,}+$";
+        String emailRegex = "^[a-zA-Z0-9@-_.]*$";
         this.checkCase(string.matches(emailRegex), "*label* must be valid email.");
         return this;
     }
