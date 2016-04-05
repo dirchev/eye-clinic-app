@@ -16,6 +16,7 @@ import eyeclinic.UIComponents.ErrorPopOver.ErrorPopOver;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
@@ -76,20 +77,18 @@ public class AppointmentForm extends BorderPane {
         this.appointment = appointment;
         this.treatment = appointment.getTreatment();
         this.patient = appointment.getPatient();
-        
-        // populate fields to be ready for editing
-        dateField.setValue(this.appointment.getStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        startTimeHourField.setText(String.valueOf(this.appointment.getStartDate().getHours()));
-        startTimeMinuteField.setText(String.valueOf(this.appointment.getStartDate().getMinutes()));
-        endTimeHourField.setText(String.valueOf(this.appointment.getEndDate().getHours()));
-        endTimeMinuteField.setText(String.valueOf(this.appointment.getEndDate().getMinutes()));
+
+        dateField.setValue(this.appointment.getStartDate().toLocalDate());
+        startTimeHourField.setText(String.valueOf(this.appointment.getStartDate().toLocalTime().getHour()));
+        startTimeMinuteField.setText(String.valueOf(this.appointment.getStartDate().toLocalTime().getMinute()));
+        endTimeHourField.setText(String.valueOf(this.appointment.getEndDate().toLocalTime().getHour()));
+        endTimeMinuteField.setText(String.valueOf(this.appointment.getEndDate().toLocalTime().getMinute()));
 
         formTitle.setText("Edit Appointment");
         
         this.setLabels();
     }
     
-
     private void setLabels() {
         patientNameLabel.setText(this.patient.getFullName());
         patientEmailLabel.setText(this.patient.getEmail());
@@ -97,13 +96,13 @@ public class AppointmentForm extends BorderPane {
         treatmentStatusLabel.setText(this.treatment.getStatus());
     }
     
-    private HashMap<String, Date> getDates() {
+    private HashMap<String, LocalDateTime> getDates() {
         // parse start and end date
         LocalDate date = dateField.getValue();
-        Date startDate = new Date(date.getYear(), date.getMonthValue(), date.getDayOfMonth(), Integer.parseInt(startTimeHourField.getText()), Integer.parseInt(startTimeMinuteField.getText()));
-        Date endDate = new Date(date.getYear(), date.getMonthValue(), date.getDayOfMonth(), Integer.parseInt(endTimeHourField.getText()), Integer.parseInt(endTimeMinuteField.getText()));
+        LocalDateTime startDate = date.atTime(Integer.parseInt(startTimeHourField.getText()), Integer.parseInt(startTimeMinuteField.getText()));
+        LocalDateTime endDate = date.atTime(Integer.parseInt(endTimeHourField.getText()), Integer.parseInt(endTimeMinuteField.getText()));
         
-        HashMap<String, Date> dates = new HashMap<>();
+        HashMap<String, LocalDateTime> dates = new HashMap<>();
         dates.put("startDate", startDate);
         dates.put("endDate", endDate);
         
@@ -169,13 +168,14 @@ public class AppointmentForm extends BorderPane {
     }
     
     private void createAppointment () {
-        HashMap<String, Date> dates = this.getDates();
+        HashMap<String, LocalDateTime> dates = this.getDates();
         this.appointment = new Appointment(this.treatment, dates.get("startDate"), dates.get("endDate"));
+        System.out.println(appointment.getStartDate());
         AppointmentsModel.getAppointments().add(this.appointment);
     }
     
     private void updateAppointment () {
-        HashMap<String, Date> dates = this.getDates();
+        HashMap<String, LocalDateTime> dates = this.getDates();
         this.appointment.setStartDate(dates.get("startDate"));
         this.appointment.setEndDate(dates.get("endDate"));
         this.appointment.setOptician(null);

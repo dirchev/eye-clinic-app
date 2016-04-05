@@ -23,6 +23,8 @@
       <HBox spacing="5.0">
         <children>
            <CheckBox fx:id="showNotAssignedOnlyCheckbox" mnemonicParsing="false" onAction="#notAssignedCheckboxHandler" text="Show Not Assigned Only" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#updateAppointmentsList" text="Refresh" />
         </children>
         <padding>
            <Insets bottom="5.0" top="5.0" />

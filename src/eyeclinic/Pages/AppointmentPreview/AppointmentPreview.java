@@ -13,7 +13,8 @@ import eyeclinic.Models.StaffModel;
 import eyeclinic.Pages.TreatmentPreview.TreatmentPreview;
 import eyeclinic.Staff;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -53,9 +54,8 @@ public class AppointmentPreview extends VBox {
     
     private void initializeLayout () {
         // appointment dates
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, MMM d 'at' HH:mm");
-        appointmentStartDateLabel.setText(dateFormat.format(appointment.getStartDate()));
-        appointmentEndDateLabel.setText(dateFormat.format(appointment.getEndDate()));
+        appointmentStartDateLabel.setText(appointment.getStartDate().format(DateTimeFormatter.ISO_LOCAL_TIME));
+        appointmentEndDateLabel.setText(appointment.getEndDate().format(DateTimeFormatter.ISO_LOCAL_TIME));
         
         // patient
         patientNameLabel.setText(appointment.getPatient().getFullName());

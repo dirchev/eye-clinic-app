@@ -4,6 +4,7 @@ import eyeclinic.Models.PatientsModel;
 import eyeclinic.Models.StaffModel;
 import eyeclinic.Models.TreatmentsModel;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -22,8 +23,8 @@ public class Appointment implements Serializable {
     private final UUID patientId;
     private final UUID treatmentId;
     private UUID opticianId;
-    private Date startDate;
-    private Date endDate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     
     /**
      * Creates new appointment record.
@@ -31,7 +32,7 @@ public class Appointment implements Serializable {
      * @param startDate the start date and time of the appointment
      * @param endDate the end date and time of the appointment
      */
-    public Appointment (Treatment treatment, Date startDate, Date endDate) {
+    public Appointment (Treatment treatment, LocalDateTime startDate, LocalDateTime endDate) {
         this.id = UUID.randomUUID();
         this.patientId = treatment.getPatient().getId();
         this.treatmentId = treatment.getId();
@@ -51,7 +52,7 @@ public class Appointment implements Serializable {
      * Returns the start date and time of the appointment
      * @return start date and time of the appointment
      */
-    public Date getStartDate() {
+    public LocalDateTime getStartDate() {
         return startDate;
     }
 
@@ -59,7 +60,7 @@ public class Appointment implements Serializable {
      * Updates the start date and time of the appointment.
      * @param startDate the new start date and time of the appointment
      */
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDateTime startDate) {
         this.startDate = startDate;
     }
 
@@ -67,7 +68,7 @@ public class Appointment implements Serializable {
      * Returns the end date and time of the appointment
      * @return end date and time of the appointment
      */
-    public Date getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 
@@ -75,7 +76,7 @@ public class Appointment implements Serializable {
      * Updates the end date and time of the appointment.
      * @param endDate the new end date and time of the appointment
      */
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }   
 

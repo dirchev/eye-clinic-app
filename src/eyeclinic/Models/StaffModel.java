@@ -12,8 +12,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -106,22 +109,24 @@ public class StaffModel {
      * @param to end of the period
      * @return list of free opticians during that period
      */
-    public static ArrayList<Staff> getFreeOpticiansForPeriod (Date from, Date to) {
+    public static ArrayList<Staff> getFreeOpticiansForPeriod (LocalDateTime from, LocalDateTime to) {
         ArrayList<Staff> filteredOpticians = new ArrayList<>();
         for (Staff o : StaffModel.getOpticians()) {
             ArrayList<Appointment> appointments = AppointmentsModel.getAppointmentsForOptician(o);
             Boolean isFree = true;
             for (Appointment a : appointments) {
-                // check if start date is in the period
-                Boolean datesIntercept = a.getStartDate().before(from) || a.getStartDate().after(from);
-                // check if end date is in the period
-                datesIntercept = datesIntercept || (a.getEndDate().before(from) && a.getEndDate().after(to));
-                // check if start date equals the start of the period
-                datesIntercept = datesIntercept || a.getStartDate().equals(from);
-                // check if end date equals the end of the period
-                datesIntercept = datesIntercept || a.getEndDate().equals(to);
-                if (datesIntercept) {
-                    isFree = false;
+                if (a.getStartDate().isBefore(from)) {
+                    // the start datetime of the appointment is before the start of the given period
+                    if (a.getEndDate().isAfter(from)) {
+                        // the end datetime is after the the start of the given period
+                        // periods intercept
+                        isFree = false;
+                        break;
+                    }
+                } else if (a.getStartDate().isBefore(to)) {
+                    // the start datetime of the appointment is in the given period
+                    // periods intercept
+                        isFree = false;
                     break;
                 }
             }

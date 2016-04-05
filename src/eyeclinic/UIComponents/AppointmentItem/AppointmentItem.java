@@ -32,8 +32,8 @@ public class AppointmentItem extends VBox {
             throw new RuntimeException(exception);
         }
         this.appointment = appointment;
-        appointmentLabel.setText("Appointment on " + appointment.getStartDate().getDate() + " / " + appointment.getStartDate().getMonth());
-        timeLabel.setText(appointment.getStartDate().getHours()+ ":" + appointment.getStartDate().getMinutes() + " - " + appointment.getEndDate().getHours()+ ":" + appointment.getEndDate().getMinutes());
+        appointmentLabel.setText("Appointment on " + appointment.getStartDate().getMonth().toString() + " " + appointment.getStartDate().getDayOfMonth());
+        timeLabel.setText(appointment.getStartDate().getHour()+ ":" + appointment.getStartDate().getMinute() + " - " + appointment.getEndDate().getHour()+ ":" + appointment.getEndDate().getMinute());
         if (this.appointment.getOptician() != null) {
             opticianNameLabel.setText(this.appointment.getOptician().getFullName());
         }
